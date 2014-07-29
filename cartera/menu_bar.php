@@ -11,7 +11,7 @@
     </div>
     <div class="navbar-collapse collapse">
       <?php  
-        $sql = "SELECT destinatario FROM post";
+        $sql = "SELECT destinatario,id_accion FROM post";
 
         $inst = $conexion->query($sql);
         $con = $inst->num_rows;

@@ -12,7 +12,7 @@
     $fecha_entrega = strtotime ( '+3 day' , strtotime ( $fecha_inicio ) ) ;
     $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
-    if ($archivo == '') {
+    if ($_FILES['archivo']['name'] == '') {
       $sql = 'UPDATE proceso_cartera SET id_proceso="5",precio_dueno="'.$precio_dueno.'",precio_sugerido="'.$precio_sugerido.'",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
 
       $ruta = $conexion->query($sql);

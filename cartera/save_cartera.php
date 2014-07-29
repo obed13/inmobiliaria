@@ -7,7 +7,7 @@
 	$fecha_entrega = strtotime ( '+5 day' , strtotime ( date ( 'Y-m-d' ) ) ) ;
     $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
-	$sql = "INSERT INTO proceso_cartera(nom_cartera,fecha,id_proceso,fecha_inicio,fecha_entrega,recabar_doc_mls) VALUES('$cartera',curdate(),'2',curdate(),'$fecha_entrega','3') ";
+	$sql = "INSERT INTO proceso_cartera(consec,nom_cartera,fecha,id_proceso,fecha_inicio,fecha_entrega,recabar_doc_mls) VALUES('1','$cartera',curdate(),'2',curdate(),'$fecha_entrega','3') ";
 	
     $fecha = date ( 'Y-m-d' );
 

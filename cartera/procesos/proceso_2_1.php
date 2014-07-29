@@ -21,7 +21,7 @@
 			con Terreno de <input type="text" class="form-control" name="terreno_m" id="terreno_m" placeholder="metros" required> m2, 
 			con dimensiones de terreno <input type="text" class="form-control" name="dimension_1" id="dimension_1" placeholder="dimension" required>m 
 			por <input type="text" class="form-control" name="dimension_2" id="dimension_2" placeholder="dimension" required>m, 
-			con construccion de <input type="text" class="form-control" name="construccion_m" id="construccion_m" placeholder="metros required">m2, 
+			con construccion de <input type="text" class="form-control" name="construccion_m" id="construccion_m" placeholder="metros" required>m2, 
 			con <input type="text" class="form-control" name="recamaras" id="recamaras" placeholder="Cuantas Recamaras?" required> Recamaras, 
 			<input type="text" class="form-control" name="bano" id="bano" placeholder="Baños" required> Baños, 
 			<input type="text" class="form-control" name="nivel" id="nivel" placeholder="niveles" required> niveles, 

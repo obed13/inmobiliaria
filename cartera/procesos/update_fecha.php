@@ -13,7 +13,7 @@
   	if ($ruta) {
   		$result = array('msj' => true, 'fecha_entrega' => $fechaFin);
   	}else {
-  		$result = array('msj' => false,);
+  		$result = array('msj' => false);
   	}
 
   	echo json_encode($result);

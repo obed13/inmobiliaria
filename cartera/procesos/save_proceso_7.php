@@ -15,12 +15,15 @@
     $inst = $conexion->query($sqlcount);
     $existe = $inst->num_rows;
     if ($existe == 0) {
-      $sql = "INSERT INTO campana(id_cartera,id_proceso,campana)VALUES('".$id_cartera."','8','1')";
+      $query='SELECT ifnull(max(consec),0)+1 FROM campana WHERE id_cartera="'.$id_cartera.'" ';
+      $cons = $conexion->query($query);
+      $consec = $cons->fetch_array();
+      $sql = "INSERT INTO campana(id_cartera,consec,id_proceso,campana)VALUES('".$id_cartera."','".$consec['consec']."','8','1')";
       $ruta = $conexion->query($sql);
     }
 
 
-      $sql = 'UPDATE proceso_cartera SET id_proceso="7.1",recabar_doc_mls="0" WHERE id_cartera="'.$id_cartera.'" ';
+      $sql = 'UPDATE proceso_cartera SET id_proceso="7.1",recabar_doc_mls="3" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE proceso_cartera SET id_proceso="7.1",poner_lona="'.$poner_lona.'",crm="'.$crm.'",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
 
       $ruta = $conexion->query($sql);

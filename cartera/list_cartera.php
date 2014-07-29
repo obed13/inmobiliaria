@@ -45,6 +45,7 @@
               a.id_proceso,
               a.recabar_doc_mls,
               a.firma_aviso_privacidad,
+              a.nuevo_contrato,
               a.estatus
             from
               proceso_cartera a
@@ -67,7 +68,7 @@
                   <?php if ($row['recabar_doc_mls'] == 3 || $row['recabar_doc_mls'] == 2) { ?>
                   <td><a href="mls.php?id=<?php echo $row['id_cartera']; ?>" class="btn btn-info" <?php if ($row['recabar_doc_mls']==1) {?>disabled="disabled" <?php }if ($row['estatus']==1) {?>disabled="disabled" <?php }if ($row['estatus']==2) {?>disabled="disabled" <?php } ?> >MLS</a> </td>
                   <?php } ?>
-                  <?php if ($row['firma_aviso_privacidad'] == 1) { ?>
+                  <?php if ($row['nuevo_contrato'] == 'si') { ?>
                   <td><a href="contrato.php?id=<?php echo $row['id_cartera']; ?>" class="btn btn-warning">Contrato</a></td>
                   <?php } ?>
                 </tr>
