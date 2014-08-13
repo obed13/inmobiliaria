@@ -76,9 +76,9 @@
                 if (data.data[i].id_destinatario == '<?php echo $_SESSION["uid"]; ?>' && data.data[i].id_accion == 1) {
                   html += "<td><a href='acceder.php?id="+data.data[i].id_post+"' class='btn btn-primary'>Ver</a></td>";
                 }
-	              html += "</tr></tbody>";
-	            } 
-	            html += "</table>";  
+              html += "</tr></tbody>";
+	            }
+	            html += "</table>";
 	            $("#bandeja").html(html);
 			}
     	})

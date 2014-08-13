@@ -55,7 +55,7 @@
                   <td><?php echo $row['nom_cartera']; ?></td>
                   <td><?php echo $row['fecha']; ?></td>
                   <td><?php if ($row['estatus']==1) { echo "<label class='label label-success'>Completado</label>"; } ?></td>
-                  <td><?php if ($row['recabar_doc_mls']==3) { echo "<label class='label label-info'>MLS Express</label>"; }elseif ($row['recabar_doc_mls']==2) { echo "<label class='label label-danger'>MLS (No Terminado)</label>"; }elseif ($row['recabar_doc_mls']==1) { echo "<label class='label label-success'>MLS</label>"; }else{echo "<label class='label label-info'>MLS Express</label>";} ?></td>
+                  <td><?php if ($row['recabar_doc_mls']==3) { echo "<label class='label label-info'>MLS Express</label>"; }elseif ($row['recabar_doc_mls']==2) { echo "<label class='label label-danger'>MLS (No Terminado)</label>"; }elseif ($row['recabar_doc_mls']==1) { echo "<label class='label label-success'>MLS</label>"; } ?></td>
                 </tr>
           <?php } ?>
               </tbody>

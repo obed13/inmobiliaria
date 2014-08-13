@@ -17,23 +17,31 @@
 	    	<h3 class="panel-title">Datos del Inmueble:</h3>
 	  	</div>
 	  	<div class="panel-body">
-			Tipo de inmueble <input type="text" class="form-control" name="tipo_inmueble" id="tipo_inmueble" placeholder="tipo" required> 
-			con Terreno de <input type="text" class="form-control" name="terreno_m" id="terreno_m" placeholder="metros" required> m2, 
-			con dimensiones de terreno <input type="text" class="form-control" name="dimension_1" id="dimension_1" placeholder="dimension" required>m 
-			por <input type="text" class="form-control" name="dimension_2" id="dimension_2" placeholder="dimension" required>m, 
-			con construccion de <input type="text" class="form-control" name="construccion_m" id="construccion_m" placeholder="metros" required>m2, 
-			con <input type="text" class="form-control" name="recamaras" id="recamaras" placeholder="Cuantas Recamaras?" required> Recamaras, 
-			<input type="text" class="form-control" name="bano" id="bano" placeholder="Baños" required> Baños, 
-			<input type="text" class="form-control" name="nivel" id="nivel" placeholder="niveles" required> niveles, 
-			ampliacion <input type="text" class="form-control" name="ampli" id="ampli" placeholder="metro" required>m2, 
-			Terreno excedente <input type="text" class="form-control" name="excendente" id="excendente" placeholder="metros" required>m2, 
-			Material de construccion <input type="text" class="form-control" name="material" id="material" placeholder="material" required>, 
-			cuenta con aislamiento? <input type="text" class="form-control" name="resp_1" id="resp_1" placeholder="si o no" required>, 
-			Amueblada <input type="text" class="form-control" name="resp_2" id="resp_2" placeholder="si o no" required>, 
-			Semi amueblada <input type="text" class="form-control" name="resp_3" id="resp_3" placeholder="si o no" required>, 
-			Gasto Máximo de Energia Eléctrica en Verano <input type="text" class="form-control" name="luz" id="luz" placeholder="$$" required>. 
+			Tipo de inmueble 
+			<select name="tipo_inmueble" id="tipo_inmueble" class="form-control" required>
+				<option value="">..selecciona..</option>
+				<option value="CASA">CASA</option>
+				<option value="TERRENO">TERRENO</option>
+				<option value="LOCAL COMERCIAL">LOCAL COMERCIAL</option>
+				<option value="DEPARTAMENTO">DEPARTAMENTO</option>
+				<option value="OFICINA">OFICINA</option>
+			</select> 
+			con Terreno de <input type="text" class="form-control" name="terreno_m" id="terreno_m" placeholder="metros" > m2, 
+			con dimensiones de terreno <input type="text" class="form-control" name="dimension_1" id="dimension_1" placeholder="dimension" >m 
+			por <input type="text" class="form-control" name="dimension_2" id="dimension_2" placeholder="dimension" >m, 
+			con construccion de <input type="text" class="form-control" name="construccion_m" id="construccion_m" placeholder="metros" >m2, 
+			con <input type="text" class="form-control" name="recamaras" id="recamaras" placeholder="Cuantas Recamaras?" > Recamaras, 
+			<input type="text" class="form-control" name="bano" id="bano" placeholder="Baños" > Baños, 
+			<input type="text" class="form-control" name="nivel" id="nivel" placeholder="niveles" > niveles, 
+			ampliacion <input type="text" class="form-control" name="ampli" id="ampli" placeholder="metro" >m2, 
+			Terreno excedente <input type="text" class="form-control" name="excendente" id="excendente" placeholder="metros" >m2, 
+			Material de construccion <input type="text" class="form-control" name="material" id="material" placeholder="material" >, 
+			cuenta con aislamiento? <input type="text" class="form-control" name="resp_1" id="resp_1" placeholder="si o no" >, 
+			Amueblada <input type="text" class="form-control" name="resp_2" id="resp_2" placeholder="si o no" >, 
+			Semi amueblada <input type="text" class="form-control" name="resp_3" id="resp_3" placeholder="si o no" >, 
+			Gasto Máximo de Energia Eléctrica en Verano <input type="text" class="form-control" name="luz" id="luz" placeholder="$$" >. 
 			Con equipo y accesorios adiccionales como se describe a continuación: 
-			<br><textarea class="form-control" name="descripcion_1" id="descripcion_1" cols="100" rows="3" required></textarea>.	
+			<br><textarea class="form-control" name="descripcion_1" id="descripcion_1" cols="100" rows="3" ></textarea>.	
 	  	</div>
 	</div>
 	<div class="panel panel-primary">
@@ -41,8 +49,8 @@
 	    	<h3 class="panel-title">Condiciones legales del inmueble:</h3>
 	  	</div>
 	  	<div class="panel-body">
-	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="lugar" id="lugar" placeholder="Direccion" required>
-	  		e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" placeholder="A nombre de:" required>
+	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="lugar" id="lugar" placeholder="Direccion" >
+	  		e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" placeholder="A nombre de:" >
 	  	</div>
 	 </div>
 	 <div class="panel panel-primary">
@@ -50,15 +58,16 @@
 	    	<h3 class="panel-title">Condiciones para la gestión de venta o renta:</h3>
 	  	</div>
 	  	<div class="panel-body">
-	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="1" required>
-	  		/ renta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="2" required> de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" required>
-	  		con una comisión de venta del <input type="text" name="comision" id="comision" class="form-control" placeholder="Comision %" required>%, 
+	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="1" >
+	  		/ renta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="2" > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" >
+	  		con una comisión de venta del <input type="text" name="comision" id="comision" class="form-control" placeholder="Comision %" >%, 
 	  		bajo las siguientes condiciones
-	  		<br><textarea name="descripcion_2" id="descripcion_2" cols="100" rows="3" class="form-control" required></textarea>
-	  		y se autoriza la promoción del inmueble antes señalado durante un plazo de <input type="text" name="meses" id="meses" class="form-control" placeholder="Meses" required>Meses a partir de <input type="date" name="mes_inicio" id="mes_inicio" class="form-control" required> hasta <input type="date" name="mes_fin" id="mes_fin" class="form-control" required>
+	  		<br><textarea name="descripcion_2" id="descripcion_2" cols="100" rows="3" class="form-control" ></textarea>
+	  		y se autoriza la promoción del inmueble antes señalado durante un plazo de <input type="text" name="meses" id="meses" class="form-control" placeholder="Meses" >Meses a partir de <input type="date" name="mes_inicio" id="mes_inicio" class="form-control" > hasta <input type="date" name="mes_fin" id="mes_fin" class="form-control" >
 	  	</div>
 	  	<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>" >
 	  	<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
+	  	<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 	  	<div class="panel-footer"><input type="submit" class="btn btn-primary" value="Aceptar"></div>
 	 </div>
 	</form>

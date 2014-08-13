@@ -24,6 +24,7 @@
 		</table>
 		<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 		<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
+		<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 		<input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-primary" id="submit_proceso" value="Aceptar">
 		<br><br>
 	</form>

@@ -14,13 +14,14 @@
 	<form action="procesos/save_proceso_10_1.php" method="POST">
 		<div class="panel panel-primary">
 		  	<!-- Default panel contents -->
-		  	<div class="panel-heading">Reporte Bimestral de Actividades:</div>
+		  	<div class="panel-heading"><u>Campaña Final:</u> Reporte Bimestral de Actividades:</div>
 			<table border="0" class="table">
 				<tr>
 					<td align="center">
 						<textarea name="reporte_mensual" <?php if($proceso == false) { ?> disabled <?php } ?> id="reporte_mensual" cols="40" rows="10" required></textarea>
 						<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 						<input type="hidden" name="fecha_entrega" id="fecha_entrega" value="<?php echo $row['fecha_entrega']; ?>">
+						<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 					</td>
 				</tr>
 			</table>

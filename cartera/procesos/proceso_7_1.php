@@ -37,6 +37,7 @@
     </table>
     <input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
     <input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
+    <input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
     <div class="panel-footer"><input type="submit" <?php if(!($_SESSION['id_cat'] == 2) && !($_SESSION['id_cat'] == 1)) { ?> disabled <?php }elseif(!($_SESSION['id_cat'] == 3) && !($_SESSION['id_cat'] == 1)) { ?> disabled <?php } ?> value="Aceptar" class="btn btn-primary"></div>
   </form>
 </div>

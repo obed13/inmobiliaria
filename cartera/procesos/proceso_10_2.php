@@ -9,18 +9,23 @@
 		echo  "<div class='col-md-12'><div class='alert alert-danger'>Espere hasta que la persona de <u><b>".$nomcat['nom_cat']."</b></u> rellenar este proceso!!</div></div>";
 		$proceso = false;
 	}
+	if (isset($_GET['msj']) == 2) {
+		$msj = "<div class='alert alert-danger'>No Puedes Guardar por que aun no Cambias las Fechas de Re-Contrato</div>";
+	}
 ?>
 <div class="col-xs-12 col-md-4">
+	<?php echo $msj; ?>
 	<form action="procesos/save_proceso_10_2.php" method="POST">
 		<div class="panel panel-primary">
 		  	<!-- Default panel contents -->
-		  	<div class="panel-heading">Acuerdos Resultado de Reporte Bimestral:</div>
+		  	<div class="panel-heading"><u>Campaña Final:</u> Acuerdos Resultado de Reporte Bimestral:</div>
 			<table border="0" class="table">
 				<tr>
 					<td align="center">
 						<textarea name="acuerdo_reporte" <?php if($proceso == false) { ?> disabled <?php } ?> id="acuerdo_reporte" cols="40" rows="10" required></textarea>
 						<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 						<input type="hidden" name="fecha_entrega" id="fecha_entrega" value="<?php echo $row['fecha_entrega']; ?>">
+						<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 					</td>
 				</tr>
 			</table>

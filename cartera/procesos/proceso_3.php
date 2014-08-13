@@ -21,6 +21,7 @@
 		<br>
 		<textarea name="acuerdo_comment" <?php if($proceso == false) { ?> disabled <?php } ?> id="acuerdo_comment" cols="40" rows="5"></textarea>
 		<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
+		<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 		<br>
 		<input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-primary" id="submit_proceso" value="Aceptar">
 	</form>

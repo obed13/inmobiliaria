@@ -7,7 +7,28 @@
 
   	$id = $_GET['id'];
 
-  	$sql = "SELECT id_cartera,nom_cartera,id_proceso FROM proceso_cartera WHERE id_cartera='$id' ";
+  	$sql = "
+      SELECT 
+        a.id_cartera
+        ,a.nom_cartera
+        ,a.id_proceso 
+        ,b.id_cat
+        ,c.nom_cat
+        ,concat(d.nombre, ' ', d.ap_paterno) as nombre
+      FROM 
+        proceso_cartera a
+        ,procesos b
+        ,categoria c
+        ,usuario d
+      WHERE 
+        a.id_cartera='$id'
+      and
+        a.id_proceso = b.id_proceso
+      and
+        b.id_cat = c.id_cat
+      and
+        c.id_cat = d.id_cat
+    ";
   	$proceso = $conexion->query($sql);
   	$cartera = $proceso->fetch_array();
   	$op = $cartera['id_proceso'];
@@ -32,7 +53,7 @@
           <?php include_once 'menu.php'; ?>
         </div>
         <div class="col-sm-9 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">Cartera: <?php echo $cartera['nom_cartera'];?></h2>
+          <h3 class="sub-header">Cartera: <?php echo $cartera['nom_cartera'];?> <i class="pull-right">Encargado: <?php echo $cartera['nombre'];?></i></h3>
           <?php include($contenido); ?>
         </div>
       </div>

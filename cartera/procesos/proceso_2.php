@@ -2,31 +2,25 @@
 	$sql = "SELECT DATE_FORMAT(a.fecha_inicio, '%d-%m-%Y') fecha, a.fecha_entrega, a.cita_propiedad, a.comment_preliminar FROM proceso_cartera a WHERE id_cartera='$id' ";
 	$resultado = $conexion->query($sql);
 	$row = $resultado->fetch_array();
-	$sqlcat = "SELECT nom_cat FROM categoria WHERE id_cat='2' ";
-	$resultcat = $conexion->query($sqlcat);
-	$nomcat = $resultcat->fetch_array();
-	if ($_SESSION['id_cat'] != 2 && $_SESSION['id_cat'] != 1) {
-		echo  "<div class='col-md-12'><div class='alert alert-danger'>Espere hasta que la persona de <u><b>".$nomcat['nom_cat']."</b></u> rellenar este proceso!!</div></div>";
-		$proceso = false;
-	}
 ?>
 <div class="col-xs-12 col-md-4">
 	<form action="procesos/save_proceso_2.php" method="POST">
 		<label for="comment_preliminar">Comentario Preliminar:</label>
 		<br>
-		<textarea class="form-control" <?php if($proceso == false) { ?> disabled <?php } ?> name="comment_preliminar" id="comment_preliminar" cols="50" rows="5" required><?php echo $row['comment_preliminar']; ?></textarea>
+		<textarea class="form-control"  name="comment_preliminar" id="comment_preliminar" cols="50" rows="5" required><?php echo $row['comment_preliminar']; ?></textarea>
 		<br>
 		<label for="cita_propiedad">Cita Propiedad</label>
 		<br>
-		<input type="date" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="cita_propiedad" id="cita_propiedad" value="<?php echo $row['cita_propiedad']; ?>" required>
+		<input type="date"  class="form-control" name="cita_propiedad" id="cita_propiedad" value="<?php echo $row['cita_propiedad']; ?>" required>
 		<br>
 		<label for="comment_seguimiento">Comentario Seguimiento:</label>
 		<br>
-		<textarea class="form-control" <?php if($proceso == false) { ?> disabled <?php } ?> name="comment_seguimiento" id="comment_seguimiento" cols="50" rows="5" ></textarea>
+		<textarea class="form-control"  name="comment_seguimiento" id="comment_seguimiento" cols="50" rows="5" ></textarea>
 		<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 		<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
+		<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 		<br>
-		<input type="submit" class="btn btn-primary" <?php if($proceso == false) { ?> disabled <?php } ?> id="submit_proceso" value="Aceptar">
+		<input type="submit" class="btn btn-primary"  id="submit_proceso" value="Aceptar">
 	</form>
 </div>
 <div class="col-md-3 col-md-offset-2">
@@ -37,10 +31,10 @@
 		<br>
 		<label for="fecha_entrega">Fecha de Entrega</label>
 		<br>
-		<input type="date" class="form-control" <?php if($proceso == false) { ?> disabled <?php } ?> name="fecha_entrega" id="fecha_entrega" value="<?php echo $row['fecha_entrega']; ?>">
+		<input type="date" class="form-control"  name="fecha_entrega" id="fecha_entrega" value="<?php echo $row['fecha_entrega']; ?>">
 		<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 		<br>
-		<input type="submit" class="btn btn-success" <?php if($proceso == false) { ?> disabled <?php } ?> id="submit_fecha" value="Cambiar Fecha Entrega">
+		<input type="submit" class="btn btn-success" id="submit_fecha" value="Cambiar Fecha Entrega">
 		<br>
 		<div id="result_fecha"></div>
 	</form>

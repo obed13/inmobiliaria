@@ -4,7 +4,7 @@
 
     // input radio
     $id_cartera         = $_POST['id_cartera'];
-    $fecha_inicio       = $_POST['fecha_entrega'];
+    $fecha_inicio       = date ( 'Y-m-d');
     $bolsa_ampi         = $_POST['bolsa_ampi'];
     $portal_crm         = $_POST['portal_crm'];
     $revista            = $_POST['revista'];
@@ -36,10 +36,24 @@
     $letrero_fecha       = $_POST['letrero_fecha'];
     $redes_fecha         = $_POST['redes_sociales_fecha'];
     $evento_fecha        = $_POST['evento_open_house_fecha'];
-    
+    $id = $_POST['id_user'];
 
     $fecha_entrega = strtotime ( '+50 day' , strtotime ( $fecha_inicio ) ) ;
     $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
+
+    #Funcion de Mensaje para El Encargado del Proceso
+      #proceso = Encargado
+      #2 = 2
+      #3 = 2
+      #4 = 3
+      #5 = 2
+      #6 = 3
+      #7 = 4
+      #8 = 3
+      #9 = 3
+      #10 = 3
+      bandeja($id,$id_cartera,3,1);
+      #Fin de Funcion
 
 //=====================================================================================================================//
     if ($bolsa_ampi == '') {

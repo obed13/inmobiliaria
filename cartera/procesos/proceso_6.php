@@ -10,12 +10,15 @@
 		$proceso = false;
 	}
 ?>
-<div class="col-xs-12 col-md-6">
-	<form action="procesos/save_proceso_6.php" method="POST">
+<div class="col-xs-12 col-md-7">
+	<form action="procesos/save_proceso_6.php" method="POST" enctype="multipart/form-data">
 		<table class="table table-striped">
 			<tr>
 				<td><label for="recabar_firmas">Recabar Firmas para Contrato:</label></td>
-				<td><input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="recabar_firmas" id="recabar_firmas" value="1" required></td>
+				<td>
+					<input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="recabar_firmas" id="recabar_firmas" value="1" required>
+					<input type="file" name="archivo" id="archivo" class="form-control" required>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="firma_aviso_privacidad">Firma de Aviso de Privacidad:</label></td>
@@ -23,6 +26,7 @@
 					<input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="firma_aviso_privacidad" id="firma_aviso_privacidad" value="1" required>
 					<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 					<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
+					<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 				</td>
 			</tr>
 			<tr>
@@ -39,7 +43,7 @@
 		</table>
 	</form>
 </div>
-<div class="col-md-3 col-md-offset-1">
+<div class="col-md-3 ">
 	<form action="update_fecha.php" method="POST" id="form_fecha" name="form_fecha">
 		<label for="fecha_inicio">Fecha de Inicio</label>
 		<br>

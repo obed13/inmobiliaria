@@ -6,7 +6,22 @@
   	$id_cartera = $_POST['id_cartera'];
   	$acuerdo_previo = $_POST['acuerdo_previo'];
     $acuerdo_comment = $_POST['acuerdo_comment'];
-  	$fecha_inicio = $_POST['fecha_entrega'];
+  	$fecha_inicio = date ( 'Y-m-d');
+    $id = $_POST['id_user'];
+
+    #Funcion de Mensaje para El Encargado del Proceso
+    #proceso = Encargado
+      #2 = 2
+      #3 = 2
+      #4 = 3
+      #5 = 2
+      #6 = 3
+      #7 = 4
+      #8 = 3
+      #9 = 3
+      #10 = 3
+    bandeja($id,$id_cartera,3,1);
+    #Fin de Funcion
 
     $fecha_entrega = strtotime ( '+3 day' , strtotime ( $fecha_inicio ) ) ;
     $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );

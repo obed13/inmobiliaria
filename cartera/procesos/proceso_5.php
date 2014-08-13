@@ -11,7 +11,7 @@
 	}
 ?>
 <div class="col-xs-12 col-md-6">
-	<form action="procesos/save_proceso_5.php" method="POST">
+	<form action="procesos/save_proceso_5.php" method="POST" enctype="multipart/form-data">
 		<table class="table table-striped">
 			<tr>
 				<td><label for="revision_cond_preliminar">Revision de Condiciones Preliminares:</label></td>
@@ -19,7 +19,10 @@
 			</tr>
 			<tr>
 				<td><label for="foto_preliminar">Tomar Fotos preliminares:</label></td>
-				<td><input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="foto_preliminar" id="foto_preliminar" value="1" required></td>
+				<td>
+					<input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="foto_preliminar" id="foto_preliminar" value="1" required>
+					<input type="file" name="foto" id="foto" class="form-control" required>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="elab_contrato">Elaborar Contrato de Prestacion de Servicios:</label></td>
@@ -27,6 +30,7 @@
 					<textarea name="elab_contrato" <?php if($proceso == false) { ?> disabled <?php } ?> id="elab_contrato" cols="40" rows="5" required></textarea>
 					<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 					<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
+					<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
 				</td>
 			</tr>
 			<tr>

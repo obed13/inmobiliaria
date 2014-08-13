@@ -74,7 +74,7 @@
         <a class="navbar-brand" href="#">Inmobiliaria</a>
       </div>
       <div class="navbar-collapse collapse">
-        <?php include_once '../menu_bar.php'; ?>
+        <?php include_once 'menu_bar.php'; ?>
       </div>
     </div>
   </div>

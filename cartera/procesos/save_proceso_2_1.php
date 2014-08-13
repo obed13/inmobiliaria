@@ -29,10 +29,24 @@
     $meses          = $_POST['meses'];
     $mes_inicio     = $_POST['mes_inicio'];
     $mes_fin        = $_POST['mes_fin'];
-    $fecha_inicio   = $_POST['fecha_entrega'];
+    $fecha_inicio   = date ( 'Y-m-d');
+    $id = $_POST['id_user'];
 
-
-      $fecha_entrega = strtotime ( '+2 day' , strtotime ( $fecha_inicio ) ) ;
+      #Funcion de Mensaje para El Encargado del Proceso
+      #proceso = Encargado
+      #2 = 2
+      #3 = 2
+      #4 = 3
+      #5 = 2
+      #6 = 3
+      #7 = 4
+      #8 = 3
+      #9 = 3
+      #10 = 3
+      bandeja($id,$id_cartera,2,1);
+      #Fin de Funcion
+      
+      $fecha_entrega = strtotime ( '+5 day' , strtotime ( $fecha_inicio ) ) ;
       $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
       $sql = 'INSERT INTO datos_inmuebles(id_cartera,tipo_mueble,terreno_2,dimension_1,dimension_2,construccion_m,recamaras,bano,nivel,ampli,excendente,material,resp_1,resp_2,resp_3,luz,descripcion_1,lugar,titular,ve_re,precio,comision,descripcion_2,meses,mes_inicio,mes_fin) VALUES ("'.$id_cartera.'","'.$tipo_mueble.'","'.$terreno_m.'","'.$dimension_1.'","'.$dimension_2.'","'.$construccion_m.'","'.$recamaras.'","'.$bano.'","'.$nivel.'","'.$ampli.'","'.$excendente.'","'.$material.'","'.$resp_1.'","'.$resp_2.'","'.$resp_3.'","'.$luz.'","'.$descripcion_1.'","'.$lugar.'","'.$titular.'","'.$ve_re.'","'.$precio.'","'.$comision.'","'.$descripcion_2.'","'.$meses.'","'.$mes_inicio.'","'.$mes_fin.'") ';

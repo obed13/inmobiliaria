@@ -29,7 +29,8 @@
 	}
 ?>
 <div class="col-xs-12 col-md-6">
-	<form action="procesos/save_proceso_4.php" method="POST" enctype="multipart/form-data">
+	<div id="result"></div>
+	<form action="procesos/save_proceso_4.php" id="form_archivo" method="POST" enctype="multipart/form-data">
 		<table class="table">
 			<tr>
 				<th colspan="2">Determinacion del Precio</th>
@@ -49,7 +50,10 @@
 				<td><input type="file" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="archivo" id="archivo"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-primary" id="submit_proceso" value="Aceptar"></td>
+				<td colspan="2" align="center">
+					<input type="hidden" name="id_user" value="<?php echo $_SESSION['uid']; ?>">
+					<input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-primary" id="submit_proceso" value="Aceptar">
+				</td>
 			</tr>
 		</table>
 	</form>
@@ -73,39 +77,50 @@
 <script src="../js/jquery-1.10.2.js"></script>
 <script>
 	$(function() {
+		$("#submit_proceso").on('click', function(e) {
+			e.preventDefault();
+			/* Act on the event */
+
+			if ($("#precio_dueno").val() == "" && $("#precio_sugerido").val() == "" && $("#archivo").val() == "") {
+				$("#result").html("<div class='alert alert-danger'>Hay Campos Vacios!!!!</div>");
+			} else{
+				$("#form_archivo").submit();
+			}
+
+		});
+
 		$("#submit_fecha").on('click', function(e) {
 			e.preventDefault();
 			var datos = $("#form_fecha").serialize();
 			/* Act on the event */
-			$.ajax({
-				url: 'procesos/update_fecha.php',
-				type: 'POST',
-				dataType: 'json',
-				data: datos,
-				success: function(data){
-					if(data.msj == true) {
-					  $("#fecha_entregas").val(data.fecha_entrega);
-		              $("#result_fecha").fadeIn('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
-		              $("#result_fecha").fadeOut('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
-		            }else{
-		              $("#result_fecha").html("<div class='alert alert-danger'>No se pudo Guardar!</div>");
+				$.ajax({
+					url: 'procesos/update_fecha.php',
+					type: 'POST',
+					dataType: 'json',
+					data: datos,
+					success: function(data){
+						if(data.msj == true) {
+						  $("#fecha_entregas").val(data.fecha_entrega);
+			              $("#result_fecha").fadeIn('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
+			              $("#result_fecha").fadeOut('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
+			            }else{
+			              $("#result_fecha").html("<div class='alert alert-danger'>No se pudo Guardar!</div>");
+			            }
+					},
+		            beforeSend: function(){
+		              $("#result_fecha").html("<div class='alert-info form-control'><img src='../../img/ajax-loader.gif' /> Loading...</div>");
 		            }
-				},
-	            beforeSend: function(){
-	              $("#result_fecha").html("<div class='alert-info form-control'><img src='../../img/ajax-loader.gif' /> Loading...</div>");
-	            }
-			})
-			.done(function() {
-				console.log("success");
-			})
-			.fail(function() {
-				console.log("error");
-				$("#result_fecha").html("<div class='alert alert-danger'>ERROR!</div>");
-			})
-			.always(function() {
-				console.log("complete");
-			});
-			
+				})
+				.done(function() {
+					console.log("success");
+				})
+				.fail(function() {
+					console.log("error");
+					$("#result_fecha").html("<div class='alert alert-danger'>ERROR!</div>");
+				})
+				.always(function() {
+					console.log("complete");
+				});
 		});
 	});
 </script>
