@@ -71,10 +71,10 @@
                 if (data.data[i].id_accion == 1) {
                   html += "<td><div class='label label-danger'>" + data.data[i].nom_accion + "</div></td>";
                 }else{
-                  html += "<td><div class='label label-success'>" + data.data[i].nom_accion + "</div></td>";
+                  html += "<td colspan='2'><div class='label label-success'>" + data.data[i].nom_accion + "</div></td>";
                 }
-                if (data.data[i].id_destinatario == '<?php echo $_SESSION["uid"]; ?>' && data.data[i].id_accion == 1) {
-                  html += "<td><a href='acceder.php?id="+data.data[i].id_post+"' class='btn btn-primary'>Ver</a></td>";
+                if (data.data[i].id_user == '<?php echo $_SESSION["uid"]; ?>' && data.data[i].id_accion == 1) {
+                  html += "<td><a href='acceder.php?id="+data.data[i].id_post+"' class='label btn-primary'>Ver</a></td>";
                 }
               html += "</tr></tbody>";
 	            }

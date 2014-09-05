@@ -1,4 +1,4 @@
-<?php  
+<?php
 	require_once '../../conexion.php';
   	$conexion = conectar();
 
@@ -38,10 +38,6 @@
     $evento_fecha        = $_POST['evento_open_house_fecha'];
     $id = $_POST['id_user'];
 
-
-
-    $fecha_entrega = strtotime ( '+50 day' , strtotime ( $fecha_inicio ) ) ;
-    $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
     #Funcion de Mensaje para El Encargado del Proceso
       #proceso = Encargado
@@ -113,7 +109,7 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-      
+
     }elseif ($periodico == '') {
       $sql = 'UPDATE campana SET periodico_fecha="'.$periodico_fecha.'",bolsa_ampi="'.$bolsa_ampi.'",bolsa_fecha="'.$bolsa_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",revista="'.$revista.'",revista_fecha="'.$revista_fecha.'",venta_brokers="'.$venta_brokers.'",venta_fecha="'.$venta_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE campana SET web="'.$web.'",web_fecha="'.$web_fecha.'",letrero="'.$letrero.'",letrero_fecha="'.$letrero_fecha.'",redes_sociales="'.$redes_sociales.'",redes_fecha="'.$redes_fecha.'",evento_open_house="'.$evento_open_house.'",evento_fecha="'.$evento_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
@@ -127,7 +123,7 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-      
+
     }elseif ($web == '') {
       $sql = 'UPDATE campana SET web_fecha="'.$web_fecha.'",bolsa_ampi="'.$bolsa_ampi.'",bolsa_fecha="'.$bolsa_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",revista="'.$revista.'",revista_fecha="'.$revista_fecha.'",venta_brokers="'.$venta_brokers.'",venta_fecha="'.$venta_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE campana SET periodico="'.$periodico.'",periodico_fecha="'.$periodico_fecha.'",letrero="'.$letrero.'",letrero_fecha="'.$letrero_fecha.'",redes_sociales="'.$redes_sociales.'",redes_fecha="'.$redes_fecha.'",evento_open_house="'.$evento_open_house.'",evento_fecha="'.$evento_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
@@ -141,7 +137,7 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-      
+
     }elseif ($letrero == '') {
       $sql = 'UPDATE campana SET letrero_fecha="'.$letrero_fecha.'",bolsa_ampi="'.$bolsa_ampi.'",bolsa_fecha="'.$bolsa_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",revista="'.$revista.'",revista_fecha="'.$revista_fecha.'",venta_brokers="'.$venta_brokers.'",venta_fecha="'.$venta_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE campana SET periodico="'.$periodico.'",periodico_fecha="'.$periodico_fecha.'",web="'.$web.'",web_fecha="'.$web_fecha.'",redes_sociales="'.$redes_sociales.'",redes_fecha="'.$redes_fecha.'",evento_open_house="'.$evento_open_house.'",evento_fecha="'.$evento_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
@@ -155,7 +151,7 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-      
+
     }elseif ($redes_sociales == '') {
       $sql = 'UPDATE campana SET redes_fecha="'.$redes_fecha.'",bolsa_ampi="'.$bolsa_ampi.'",bolsa_fecha="'.$bolsa_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",revista="'.$revista.'",revista_fecha="'.$revista_fecha.'",venta_brokers="'.$venta_brokers.'",venta_fecha="'.$venta_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE campana SET periodico="'.$periodico.'",periodico_fecha="'.$periodico_fecha.'",web="'.$web.'",web_fecha="'.$web_fecha.'",letrero="'.$letrero.'",letrero_fecha="'.$letrero_fecha.'",evento_open_house="'.$evento_open_house.'",evento_fecha="'.$evento_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
@@ -169,7 +165,7 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-      
+
     }elseif ($evento_open_house == '') {
       $sql = 'UPDATE campana SET evento_fecha="'.$evento_fecha.'",bolsa_ampi="'.$bolsa_ampi.'",bolsa_fecha="'.$bolsa_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",revista="'.$revista.'",revista_fecha="'.$revista_fecha.'",venta_brokers="'.$venta_brokers.'",venta_fecha="'.$venta_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE campana SET periodico="'.$periodico.'",periodico_fecha="'.$periodico_fecha.'",web="'.$web.'",web_fecha="'.$web_fecha.'",letrero="'.$letrero.'",letrero_fecha="'.$letrero_fecha.'",redes_sociales="'.$redes_sociales.'",redes_fecha="'.$redes_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
@@ -183,14 +179,32 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-      
+
     }else{
+
+      $fecha_inicio = date ( 'Y-m-d');
+      $fecha_entrega = strtotime ( '+50 day' , strtotime ( $fecha_inicio ) ) ;
+      $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
+
       $sql = 'UPDATE campana SET bolsa_ampi="'.$bolsa_ampi.'",bolsa_fecha="'.$bolsa_fecha.'",portal_crm="'.$portal_crm.'",portal_fecha="'.$portal_fecha.'",revista="'.$revista.'",revista_fecha="'.$revista_fecha.'",venta_brokers="'.$venta_brokers.'",venta_fecha="'.$venta_fecha.'",periodico="'.$periodico.'",periodico_fecha="'.$periodico_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE campana SET web="'.$web.'",web_fecha="'.$web_fecha.'",letrero="'.$letrero.'",letrero_fecha="'.$letrero_fecha.'",redes_sociales="'.$redes_sociales.'",redes_fecha="'.$redes_fecha.'",evento_open_house="'.$evento_open_house.'",evento_fecha="'.$evento_fecha.'" WHERE id_cartera="'.$id_cartera.'" ';
-      $sqlproceso = 'UPDATE proceso_cartera SET id_proceso="8.1" WHERE id_cartera="'.$id_cartera.'" ';
-      $sqlcampana = 'UPDATE campana SET id_proceso="8.1" WHERE id_cartera="'.$id_cartera.'" ';
+      $sqlproceso = 'UPDATE proceso_cartera SET id_proceso="8.1",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sql2 = 'UPDATE campana SET bolsa_btn="'.$bolsa_btn.'",portal_crm_btn="'.$portal_crm_btn.'",revista_btn="'.$revista_btn.'",venta_btn="'.$venta_btn.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sql3 = 'UPDATE campana SET periodico_btn="'.$periodico_btn.'",web_btn="'.$web_btn.'",letrero_btn="'.$letrero_btn.'",redes_btn="'.$redes_btn.'",evento_btn="'.$evento_btn.'" WHERE id_cartera="'.$id_cartera.'" ';
+
+       $sqlcontrato = "SELECT nuevo_contrato,contrato_inicio,contrato_fin,nueva_fecha FROM proceso_cartera WHERE id_cartera='".$id_cartera."' ";
+      $inst = $conexion->query($sqlcontrato);
+      $contrato = $inst->fetch_array();
+      if (isset($contrato['nuevo_contrato']) == 'si') {
+
+        $query2='SELECT ifnull(max(consec),0)+1 as consec FROM campana WHERE id_cartera='.$id_cartera;
+        $cons = $conexion->query($query2);
+        $consec = $cons->fetch_assoc();
+
+        $sqlcampana = 'UPDATE campana SET id_proceso="8.1",consec="'.$consec['consec'].'" WHERE id_cartera="'.$id_cartera.'" ';
+      } else {
+        $sqlcampana = 'UPDATE campana SET id_proceso="8.1" WHERE id_cartera="'.$id_cartera.'" ';
+      }
 
       $rutas = $conexion->query($sqls);
       $campana = $conexion->query($sqlcampana);

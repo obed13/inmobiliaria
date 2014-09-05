@@ -152,8 +152,34 @@ textarea { resize:none; }
 
 
 /* Fin Cuadros */
-/* Diseno Responsivo*/
+/* Subir Imagenes */
 
-@media screen and (max-width:480px){
-	
+.file_browser
+{
+    width: 50px; 
+	height: 50px;
+	background:url("../img/file_icons/add_photo.png") no-repeat;
+    background-size: 50px 50px;
+	float: left;
+    cursor:pointer;
+}
+
+.hide_broswe
+{
+	opacity:0;
+	-webkit-opacity:0;
+	-moz-opacity:0;
+	filter:alpha(opacity:0);
+	width:160px;
+	padding:5px;
+	cursor:pointer;
+}
+#displayImg
+{
+    border:1px solid #000;
+    max-width:100%;
+    max-height:200px;
+    color:#cc0000;
+    font-size:12px;
+    overflow-y:auto;
 }

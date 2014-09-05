@@ -1,4 +1,4 @@
-<?php  
+<?php
 	$sql = "SELECT DATE_FORMAT(a.fecha_inicio, '%d-%m-%Y') fecha, a.fecha_entrega,datediff(a.contrato_fin, a.contrato_inicio) as diferencia FROM proceso_cartera a WHERE id_cartera='$id' ";
 	$resultado = $conexion->query($sql);
 	$row = $resultado->fetch_array();

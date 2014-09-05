@@ -44,7 +44,7 @@
       #Funcion de Mensaje para El Encargado del Proceso
       bandeja($id,$id_cartera,2,1);
       #Fin de Funcion
-      
+
       $fecha_entrega = strtotime ( '+5 day' , strtotime ( $fecha_inicio ) ) ;
       $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 

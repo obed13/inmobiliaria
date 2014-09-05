@@ -1,4 +1,4 @@
-<?php 
+<?php
 	error_reporting(E_ALL ^ E_NOTICE);
   	session_start(); 
   	require_once '../conexion.php';
@@ -43,10 +43,14 @@
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/estilo.css">
+<!-- JavaScript -->
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.deskform.js"></script>
 </head>
 <body>
 	<?php include_once 'menu_bar.php'; ?>
-	
+
 	<div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -62,8 +66,6 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    
 </body>
 </html>

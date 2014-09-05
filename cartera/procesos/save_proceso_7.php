@@ -16,10 +16,7 @@
     $inst = $conexion->query($sqlcount);
     $existe = $inst->num_rows;
     if ($existe == 0) {
-      $query='SELECT ifnull(max(consec),0)+1 FROM campana WHERE id_cartera="'.$id_cartera.'" ';
-      $cons = $conexion->query($query);
-      $consec = $cons->fetch_array();
-      $sql = "INSERT INTO campana(id_cartera,consec,id_proceso,campana)VALUES('".$id_cartera."','".$consec['consec']."','8','1')";
+      $sql = "INSERT INTO campana(id_cartera,consec,id_proceso,campana)VALUES('".$id_cartera."','1','8','1')";
       $ruta = $conexion->query($sql);
     }
       #Funcion de Mensaje para El Encargado del Proceso

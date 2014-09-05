@@ -17,15 +17,15 @@
 	    	<h3 class="panel-title">Datos del Inmueble:</h3>
 	  	</div>
 	  	<div class="panel-body">
-			Tipo de inmueble 
-			<select name="tipo_inmueble" id="tipo_inmueble" class="form-control" required>
+			Tipo de inmueble
+			<select name="tipo_inmueble" id="tipo_inmueble" class="form-control" required >
 				<option value="">..selecciona..</option>
 				<option value="CASA">CASA</option>
 				<option value="TERRENO">TERRENO</option>
 				<option value="LOCAL COMERCIAL">LOCAL COMERCIAL</option>
 				<option value="DEPARTAMENTO">DEPARTAMENTO</option>
 				<option value="OFICINA">OFICINA</option>
-			</select> 
+			</select>
 			con Terreno de <input type="text" class="form-control" name="terreno_m" id="terreno_m" placeholder="metros" > m2, 
 			con dimensiones de terreno <input type="text" class="form-control" name="dimension_1" id="dimension_1" placeholder="dimension" >m 
 			por <input type="text" class="form-control" name="dimension_2" id="dimension_2" placeholder="dimension" >m, 
@@ -60,7 +60,7 @@
 	  	<div class="panel-body">
 	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="1" >
 	  		/ renta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="2" > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" >
-	  		con una comisión de venta del <input type="text" name="comision" id="comision" class="form-control" placeholder="Comision %" >%, 
+	  		con una comisión de venta del <input type="text" name="comision" id="comision" class="form-control" placeholder="Comision %"  required >%, 
 	  		bajo las siguientes condiciones
 	  		<br><textarea name="descripcion_2" id="descripcion_2" cols="100" rows="3" class="form-control" ></textarea>
 	  		y se autoriza la promoción del inmueble antes señalado durante un plazo de <input type="text" name="meses" id="meses" class="form-control" placeholder="Meses" >Meses a partir de <input type="date" name="mes_inicio" id="mes_inicio" class="form-control" > hasta <input type="date" name="mes_fin" id="mes_fin" class="form-control" >

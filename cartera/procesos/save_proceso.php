@@ -1,4 +1,4 @@
-<?php  
+<?php
 	require_once '../../conexion.php';
   	$conexion = conectar();
 
@@ -10,7 +10,7 @@
 
   	$sql = "INSERT INTO proceso_cartera(id_cartera,id_proceso,fecha_inicio,fecha_entrega) VALUES ('".$id_cartera."','2',now(),'".$fecha_entrega."')";
     $ruta = $conexion->query($sql);
-    
+
     $sql2 = "INSERT INTO mls(id_cartera) VALUES ('".$id_cartera."')";
     $mls = $conexion->query($sql2);
 

@@ -1,4 +1,4 @@
-<?php  
+<?php
 	require_once '../../conexion.php';
   	$conexion = conectar();
 
@@ -8,6 +8,7 @@
     $firma_aviso_privacidad = $_POST['firma_aviso_privacidad'];
     $contrato_inicio = $_POST['contrato_inicio'];
     $contrato_fin = $_POST['contrato_fin'];
+    $elab_contrato = $_POST['elab_contrato'];
   	$fecha_inicio = date ( 'Y-m-d');
     $id = $_POST['id_user'];
 
@@ -33,7 +34,7 @@
       bandeja($id,$id_cartera,4,1);
       #Fin de Funcion
 
-    	$sql = 'UPDATE proceso_cartera SET id_proceso="7",recabar_firmas="'.$recabar_firmas.'",archivo_firma="'.$destino.'",firma_aviso_privacidad="'.$firma_aviso_privacidad.'",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
+    	$sql = 'UPDATE proceso_cartera SET id_proceso="7",elab_contrato="'.$elab_contrato.'",recabar_firmas="'.$recabar_firmas.'",archivo_firma="'.$destino.'",firma_aviso_privacidad="'.$firma_aviso_privacidad.'",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sql2 = 'UPDATE proceso_cartera SET contrato_inicio="'.$contrato_inicio.'",contrato_fin="'.$contrato_fin.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sql3 = "INSERT INTO mls(id_cartera,id_proceso_mls,a1)VALUES('".$id_cartera."','1','1')";
     

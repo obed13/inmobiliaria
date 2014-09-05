@@ -42,10 +42,11 @@
           //recuerden que deben crear un directorio con este mismo nombre
           //en el mismo lugar donde se encuentra el archivo subir.php
           $ruta = "archivos/" . $_FILES['archivo']['name'];
+          $destino = "../../archivos/" . $_FILES['archivo']['name'];
           //comprovamos si este archivo existe para no volverlo a copiar.
           //pero si quieren pueden obviar esto si no es necesario.
           //o pueden darle otro nombre para que no sobreescriba el actual.
-          if (!file_exists($ruta)){
+          if (!file_exists($destino)){
             //aqui movemos el archivo desde la ruta temporal a nuestra ruta
             //usamos la variable $resultado para almacenar el resultado del proceso de mover el archivo
             //almacenara true o false
@@ -65,14 +66,14 @@
               #10 = 3
               bandeja($id,$id_cartera,2,1);
               #Fin de Funcion
-              
+
               $sql = 'UPDATE proceso_cartera SET id_proceso="5",archivo="'.$ruta.'" WHERE id_cartera="'.$id_cartera.'" ';
               $ruta = $conexion->query($sql);
 
               if ($ruta) {
                 header("Location:../proceso.php?id=$id_cartera");
               } else {
-                header("Location:index.php?msj=6"); // no se pudo guardar
+                header("Location:../proceso.php?id=$id_cartera&msj=6"); // no se pudo guardar
               }
             } else {
               header("Location:../proceso.php?id=$id_cartera&msj=5"); // error al mover el archivo

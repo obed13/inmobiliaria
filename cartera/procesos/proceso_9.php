@@ -27,7 +27,7 @@
 				<td><label for="publicitar_inicio">Aprobado</label></td>
 				<td colspan="2"><label for="publicitar_inicio">Fecha de Salir</label></td>
 			</tr>
-<?php while ($campana = $result->fetch_array()) { ?>			
+<?php while ($campana = $result->fetch_array()) { ?>
 			<tr>
 				<td><label for="bolsa_ampi">Bolsa Inmobiliaria AMPI y CRM, MLS: </label></td>
 				<td><input type="radio" <?php if($proceso == false) { ?> disabled <?php } ?> name="bolsa_ampi" <?php if ($campana['bolsa_ampi'] == 2) {?> checked="checked" <?php } ?> id="bolsa_ampi" value="2"></td>

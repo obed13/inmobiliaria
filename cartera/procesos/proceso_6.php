@@ -14,6 +14,12 @@
 	<form action="procesos/save_proceso_6.php" method="POST" enctype="multipart/form-data">
 		<table class="table table-striped">
 			<tr>
+				<td><label for="elab_contrato">Elaborar Contrato de Prestacion de Servicios:</label></td>
+				<td>
+					<input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="elab_contrato" id="elab_contrato" value="1" required>
+				</td>
+			</tr>
+			<tr>
 				<td><label for="recabar_firmas">Recabar Firmas para Contrato:</label></td>
 				<td>
 					<input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="recabar_firmas" id="recabar_firmas" value="1" required>

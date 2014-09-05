@@ -1,8 +1,14 @@
 <?php
   error_reporting(E_ALL ^ E_NOTICE);
+
   if (isset($_GET['msj']) == 1) {
       $msj = "<div class='alert alert-danger'>Debes estar Logeado para Entrar!!</div>";
   }
+
+  /*if (isset($_SESSION['autenticado']) && $_SESSION['autenticado'] == 'SI') {
+  	header("Location: inicio.php");
+  }*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

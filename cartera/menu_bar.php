@@ -7,11 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Inmobiliaria</a>
+      <a class="navbar-brand" href="../inicio.php">Inmobiliaria</a>
     </div>
     <div class="navbar-collapse collapse">
-      <?php  
-        $sql = "SELECT destinatario,id_accion FROM post";
+      <?php
+        $sql = "SELECT destinatario,id_accion,id_user FROM post WHERE id_user='".$_SESSION['uid']."' ";
 
         $inst = $conexion->query($sql);
         $con = $inst->num_rows;
@@ -30,7 +30,7 @@
             <li><a href="list_success.php">Carteras Completadas</a></li>
           </ul>
         </li>
-        <li><a href="../bandeja.php">Bandeja &nbsp;<?php if ($row['destinatario'] == $_SESSION['uid']) { if ($row['id_accion'] == 1) { echo "<span class='badge pull-right'>".$con."</span>"; } } ?></a></li>
+        <li><a href="../bandeja.php">Bandeja &nbsp;<?php if ($row['id_user'] == $_SESSION['uid']) { if ($row['id_accion'] == 1) { echo "<span class='badge pull-right'>".$con."</span>"; } } ?></a></li>
         <li><a href="#">Profile</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['name']; ?> <span class="caret"></span></a>

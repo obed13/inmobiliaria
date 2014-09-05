@@ -27,7 +27,7 @@
 				<td><label for="publicitar_inicio">Aprobado</label></td>
 				<td colspan="2"><label for="publicitar_inicio">Fecha de Publicacion</label></td>
 			</tr>
-<?php while ($campana = $result->fetch_array()) { ?>			
+<?php while ($campana = $result->fetch_array()) { ?>
 			<tr>
 				<td><label for="bolsa_ampi">Bolsa Inmobiliaria AMPI y CRM, MLS: </label></td>
 				<td><input type="radio" <?php if($proceso == false) { ?> disabled <?php } ?> name="bolsa_ampi" <?php if ($campana['bolsa_ampi'] == 2) {?> checked="checked" <?php } ?> id="bolsa_ampi" value="2"></td>
@@ -91,7 +91,7 @@
 				<td><input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="evento_open_house_btn" <?php if ($campana['evento_btn'] == 1) {?> checked="checked" <?php } ?> id="evento_open_house_btn" value="1" onclick="document.formulario.evento_open_house_fecha.disabled=!document.formulario.evento_open_house_fecha.disabled" ></td>
 				<td><input type="date" class="form-control" name="evento_open_house_fecha" value="<?php echo $campana['evento_fecha']; ?>" id="evento_open_house_fecha" disabled></td>
 			</tr>
-<?php } ?>			
+<?php } ?>
 			<tr>
 				<td colspan="5">
 					<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">

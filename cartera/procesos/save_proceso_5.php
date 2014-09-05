@@ -1,4 +1,4 @@
-<?php  
+<?php
 	require_once '../../conexion.php';
   	$conexion = conectar();
 
@@ -6,17 +6,15 @@
   	$id_cartera = $_POST['id_cartera'];
   	$revision_cond_preliminar = $_POST['revision_cond_preliminar'];
     $foto_preliminar = $_POST['foto_preliminar'];
-    $elab_contrato = $_POST['elab_contrato'];
+    $criterios_elab_contrato = $_POST['criterios_elab_contrato'];
   	$fecha_inicio = date ( 'Y-m-d');
     $id = $_POST['id_user'];
 
     $fecha_entrega = strtotime ( '+5 day' , strtotime ( $fecha_inicio ) ) ;
     $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
-    $carpeta = "fotos/";
-    opendir($carpeta);
-    $destino = $carpeta.$_FILES['foto']['name'];
-    if(copy($_FILES['foto']['tmp_name'], '../../'.$destino))
+
+    if(isset($id_cartera))
     {
       #Funcion de Mensaje para El Encargado del Proceso
       #proceso = Encargado
@@ -32,7 +30,7 @@
       bandeja($id,$id_cartera,3,1);
       #Fin de Funcion
 
-      $sql = 'UPDATE proceso_cartera SET id_proceso="6",revision_cond_preliminar="'.$revision_cond_preliminar.'",foto_preliminar="'.$foto_preliminar.'",foto_archivo="'.$destino.'",elab_contrato="'.$elab_contrato.'",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
+      $sql = 'UPDATE proceso_cartera SET id_proceso="6",revision_cond_preliminar="'.$revision_cond_preliminar.'",foto_preliminar="'.$foto_preliminar.'",criterios_elab_contrato="'.$criterios_elab_contrato.'",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
       $ruta = $conexion->query($sql);
 
       if ($ruta) {

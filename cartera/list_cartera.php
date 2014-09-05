@@ -60,14 +60,18 @@
             $no++;
             $fecha=$row['fecha_entrega'];
             $hoy = date("Y-m-d");
-            $segundos=substr($fecha, -2);
-            $now = substr($hoy, -2);
-            $resta = $segundos - $now;
+            //$segundos=substr($fecha, -2);
+            //$now = substr($hoy, -2);
+            //$resta = $segundos - $now;
+            $datetime1 = new DateTime($hoy);
+            $datetime2 = new DateTime($fecha);
+            $interval = $datetime1->diff($datetime2);
+            $resta = $interval->format('%a');
           ?>
                 <tr>
                   <td><?php echo $no; ?></td>
                   <td><?php echo $row['nom_cartera']; ?></td>
-                  <td><?php if ($resta == 2){ echo "<div class='label alert-danger'>".$resta." Dias</div>"; } else{ echo $resta." Dias"; } ?></td>
+                  <td><?php if($resta <= 0){ echo "<div class='label alert-danger'>".$resta." Dias ATRASADO</div>"; }elseif ($resta == 1){ echo "<div class='label alert-danger'>Te quedan ".$resta." Dias</div>"; }elseif ($resta == 2){ echo "<div class='label alert-danger'>Te quedan ".$resta." Dias</div>"; } else{ echo $resta." Dias"; } ?></td>
                   <td><?php if ($row['estatus']==1) { echo "<label class='label label-success'>Completado</label>"; }elseif ($row['estatus']==2) { echo "<label class='label label-danger'>Cancelado</label>"; }else{echo "<label class='label label-warning'>En Tramite</label>";} ?></td>
                   <td><?php if ($row['recabar_doc_mls']==3) { echo "<label class='label label-info'>MLS Express</label>"; }elseif ($row['recabar_doc_mls']==2) { echo "<label class='label label-danger'>MLS (No Terminado)</label>"; }elseif ($row['recabar_doc_mls']==1) { echo "<label class='label label-success'>MLS</label>"; } ?></td>
                   <!--<td><a href="proceso.php?id=<?php echo $row['id_cartera']; ?>" class="btn btn-success" <?php if ($row['estatus']==1) {?>disabled="disabled" <?php }if ($row['estatus']==2) {?>disabled="disabled" <?php } ?> >Proceso</a> </td>

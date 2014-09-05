@@ -92,6 +92,17 @@
                     <!--<span class="notification">6</span>-->
                   </a>
                 </div>
+              <?php } if ($row['id_proceso'] >= 2.1) { ?>
+              	<div class="col-xs-12 col-md-3">
+                  <a data-rel="tooltip" class="well span3 top-block" href="inmueble.php?id=<?php echo $row['id_cartera']; ?>">
+                    <span class="icon32 icon-color icon-profile"></span>
+                    <div>Datos de Inmueble</div>
+                    <div></div>
+                    <?php //if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
+                    <!--<div>507</div>-->
+                    <!--<span class="notification">6</span>-->
+                  </a>
+                </div>
               <?php } ?>
               </div>
             </div>
