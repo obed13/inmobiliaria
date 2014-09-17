@@ -104,14 +104,45 @@
                   </a>
                 </div>
               <?php } ?>
+                <div class="col-xs-12 col-md-3">
+                  <a data-rel="tooltip" class="well span3 top-block"data-toggle='modal' data-target='.reporte' href="javascript:void(0)">
+                    <span class="icon32 icon-color icon-pdf"></span>
+                    <div>Reporte de Actividades</div>
+                    <div></div>
+                  </a>
+                </div>
               </div>
             </div>
         </div>
       </div>
     </div>
-    <?php } ?>
-
-
+<!--  Inicio Dialogo Reporte -->
+<div class="modal fade reporte" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Reporte de Visitas</h4>
+      </div>
+      <div class="modal-body">
+          <form action="pdf/reporteAct.php" method="POST" id="reporteAct" name="reporteAct" target="_blank" >
+            <label for="fechaInicio">De:</label>
+            <br>
+            <input type="date" name="fechaInicio" id="fechaInicio" class="form-control" required>
+            <br>
+            <label for="fechaFin">Al:</label>
+            <br>
+            <input type="date" name="fechaFin" id="fechaFin" class="form-control" required>
+            <input type="hidden" name="id_cartera" value="<?php echo $row['id_cartera']; ?>">
+            <br>
+            <input type="submit" class="btn btn-primary" value="Aceptar">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
+<!-- Fin Dialogo Reporte -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

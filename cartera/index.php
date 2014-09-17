@@ -1,5 +1,5 @@
-<?php 
-  session_start(); 
+<?php
+  session_start();
   require_once '../conexion.php';
   require_once '../sesion.php';
   $conexion = conectar();
@@ -26,7 +26,7 @@
           <?php //include_once 'menu.php'; ?>
         </div>-->
         <div class="col-xs-12 col-md-12 main">
-          <h2 class="sub-header">Cartera</h2>  
+          <h2 class="sub-header">Cartera</h2>
             <div class="sortable row-fluid ui-sortable">
               <div class="row">
               <div class="col-xs-12 col-md-3">
@@ -39,7 +39,7 @@
                 <!--<span class="notification">6</span>-->
               </a>
               </div>
-              <?php  
+              <?php
                 $sql = "SELECT id_cartera FROM proceso_cartera where estatus = 0";
 
                 $inst = $conexion->query($sql);
@@ -53,7 +53,7 @@
                 <?php if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
               </a>
               </div>
-              <?php  
+              <?php
                 $sql2 = "SELECT id_cartera FROM proceso_cartera where estatus = 1";
 
                 $inst2 = $conexion->query($sql2);
@@ -79,6 +79,12 @@
                 <span class="icon32 icon-color icon-cancel"></span>
                 <div>Canceladas</div>
                 <?php if ($row3['id_cartera']) { echo "<div>".$num3."</div>"; } ?>
+              </a>
+              </div>
+              <div class="col-xs-12 col-md-3">
+              <a data-rel="tooltip" title="Reporte de Cateras" class="well span3 top-block" href="pdf/reporte.php" target="_blank">
+                <span class="icon32 icon-color icon-pdf"></span>
+                <div>Reporte de Carteras</div>
               </a>
               </div>
               </div>

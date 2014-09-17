@@ -9,6 +9,10 @@
 		echo  "<div class='col-md-12'><div class='alert alert-danger'>Espere hasta que la persona de <u><b>".$nomcat['nom_cat']."</b></u> rellenar este proceso!!</div></div>";
 		$proceso = false;
 	}
+	$sqlnum="SELECT (SELECT count(opcion) FROM actividades WHERE id_cartera='".$id."' and opcion = 1) as a,
+	(SELECT count(opcion) FROM actividades WHERE id_cartera='".$id."' and opcion = 2) as b FROM actividades WHERE id_cartera='".$id."'";
+	$num = $conexion->query($sqlnum);
+	$numero = $num->fetch_array();
 ?>
 <div class="col-xs-12 col-md-4">
 	<form action="procesos/save_proceso_9_2.php" method="POST">
@@ -30,8 +34,11 @@
 	</form>
 </div>
 <div class="col-xs-12 col-md-4">
+	<a href="javascript:void(0)" data-toggle='modal' data-target='.reporte' class="btn btn-primary">Ver Reporte</a>
+	<br>
 	<form action="update_fecha.php" method="POST" class="form-inline" id="form_fecha" name="form_fecha">
 		<label for="fecha_entrega">Fecha de Entrega</label>
+		<br>
 		<input type="date" class="form-control" name="fecha_entrega" id="fecha_entrega" readonly="readonly" value="<?php echo $row['fecha_entrega']; ?>">
 		<label for="">El Contrato se Vence en:</label>
 		<input type="text" class="form-control" readonly="readonly" value="<?php echo $row['diferencia']; ?> Dias">
@@ -62,6 +69,24 @@
 		<div id="result"></div>
 	</form>
 </div>
+<!--  Inicio Dialogo Reporte -->
+<div class="modal fade reporte" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Reporte de Visitas</h4>
+      </div>
+      <div class="modal-body">
+      	<div style="height: 500px;overflow: auto;">
+      		<?php echo '<div class="label alert-success">Total de Citas:</div> <div class="label alert-danger"><u>'.$numero['a'].'</u></div> <div class="label alert-success">Total de Llamadas:</div> <div class="label alert-danger"><u>'.$numero['b'].'</u></div>'; ?>
+      		<div id="table_reporte"></div>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Dialogo Reporte -->
 <script src="../js/jquery-1.10.2.js"></script>
 <script>
 	$(function() {
@@ -118,7 +143,41 @@
 				.always(function() {
 					console.log("complete");
 				});
-			
 		});
+//========================================== Reporte Visitas ===========================================//
+		$.ajax({
+			url: 'procesos/showComent.php',
+			type: 'POST',
+			dataType: 'json',
+			async: false,
+		  	cache: false,
+		  	data: {id: '<?php echo $id; ?>'},
+		  	success: function(data){
+		          	var html = "";
+		            var num = 0;
+		            html ="<table border='0' class='table table-striped' id='table_cartera'>";
+		            html +="<thead><tr><th>Tipo</th><th width='100'>Fecha</th><th>Comentario</th></thead><tbody>";
+		            for (i = 0; i < data.data.length; i++) {
+		            if(data.data[i].opcion == 1){ opcion='Cita';}else{opcion='Llamada';}
+		            html +="<tr>";
+		            html +="<td>"+opcion+"</td>";
+		            html +="<td>"+data.data[i].fecha+"</td>";
+		            html +="<td>"+data.data[i].comentario+"</td>";
+		            html +="</tr>";
+		            }
+		            html += "</tbody></table>";
+		            $("#table_reporte").html(html);
+		    }
+		})
+		.done(function() {
+			console.log("success");
+		})
+		.fail(function() {
+			console.log("error");
+		})
+		.always(function() {
+			console.log("complete");
+		});
+//=======================================================================================================//
 	});
 </script>

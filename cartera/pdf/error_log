@@ -1,0 +1,87 @@
+[19-Nov-2012 19:34:02] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[19-Nov-2012 19:34:02] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[20-Nov-2012 00:28:45] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[20-Nov-2012 00:28:45] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[20-Nov-2012 00:28:58] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[20-Nov-2012 00:28:58] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[20-Nov-2012 00:29:08] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[20-Nov-2012 00:29:27] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[20-Nov-2012 00:29:27] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[20-Nov-2012 00:29:37] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[20-Nov-2012 00:29:50] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[20-Nov-2012 00:29:50] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[23-Nov-2012 16:39:36] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[23-Nov-2012 16:57:06] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[26-Nov-2012 14:24:19] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[26-Nov-2012 14:24:43] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[28-Nov-2012 18:50:21] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[28-Nov-2012 18:50:23] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[28-Nov-2012 21:32:18] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[29-Nov-2012 18:16:58] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[29-Nov-2012 21:36:37] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[29-Nov-2012 21:40:40] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[30-Nov-2012 12:16:58] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[30-Nov-2012 14:47:27] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[01-Dec-2012 19:17:45] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[02-Dec-2012 18:05:52] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[03-Dec-2012 21:51:09] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[03-Dec-2012 21:53:18] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 09:53:51] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 11:13:11] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 11:44:57] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 14:42:33] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 18:10:16] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 18:10:22] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 19:11:08] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 22:21:46] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 23:12:50] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 23:14:21] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 23:20:15] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 23:27:58] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[04-Dec-2012 23:30:59] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 00:09:26] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 02:15:22] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 08:53:25] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 12:17:49] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 13:18:55] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 13:21:03] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 14:26:38] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 14:48:05] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 14:48:29] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 14:53:46] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 15:02:19] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 15:17:49] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 15:23:40] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 15:26:16] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 15:28:12] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 15:28:42] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 15:32:40] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 19:54:09] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 19:54:38] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 19:55:17] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[05-Dec-2012 19:56:09] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[07-Dec-2012 12:50:18] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[07-Dec-2012 12:50:18] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[13-Jan-2013 19:44:23] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[13-Jan-2013 19:44:23] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[11-May-2013 15:57:47] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home8/facultad/public_html/controlescolar/pdf/conex.php on line 2
+[11-May-2013 15:57:47] PHP Warning:  mysql_select_db(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/conex.php on line 3
+[11-May-2013 15:57:47] PHP Warning:  mysql_query(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 7
+[11-May-2013 15:57:47] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 8
+[11-May-2013 15:57:47] PHP Warning:  mysql_query(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 46
+[11-May-2013 15:57:47] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[11-May-2013 15:57:47] PHP Warning:  mysql_query(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 50
+[11-May-2013 15:57:47] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[11-May-2013 16:00:59] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in /home8/facultad/public_html/controlescolar/pdf/conex.php on line 2
+[11-May-2013 16:00:59] PHP Warning:  mysql_select_db(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/conex.php on line 3
+[11-May-2013 16:00:59] PHP Warning:  mysql_query(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 7
+[11-May-2013 16:00:59] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 8
+[11-May-2013 16:00:59] PHP Warning:  mysql_query(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 46
+[11-May-2013 16:00:59] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 47
+[11-May-2013 16:00:59] PHP Warning:  mysql_query(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 50
+[11-May-2013 16:00:59] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/controlescolar/pdf/index.php on line 51
+[23-Sep-2013 16:05:30] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: YES) in /home8/facultad/public_html/sistema/listas_de_actas/pdf/conex.php on line 2
+[23-Sep-2013 16:05:30] PHP Warning:  mysql_select_db(): supplied argument is not a valid MySQL-Link resource in /home8/facultad/public_html/sistema/listas_de_actas/pdf/conex.php on line 3
+[23-Sep-2013 16:05:30] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: Access denied for user 'facultad'@'localhost' (using password: NO) in /home8/facultad/public_html/sistema/listas_de_actas/pdf/index.php on line 23
+[23-Sep-2013 16:05:30] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: A link to the server could not be established in /home8/facultad/public_html/sistema/listas_de_actas/pdf/index.php on line 23
+[23-Sep-2013 16:05:30] PHP Warning:  mysql_fetch_assoc(): supplied argument is not a valid MySQL result resource in /home8/facultad/public_html/sistema/listas_de_actas/pdf/index.php on line 24

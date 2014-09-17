@@ -29,10 +29,10 @@
 
     $sql = 'UPDATE proceso_cartera SET id_proceso="9",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'"  WHERE id_cartera="'.$id_cartera.'" ';
 
-    $query='SELECT ifnull(max(consec),0)+1 FROM campana WHERE id_cartera="'.$id_cartera.'" AND campana="2" ';
-    $cons = $conexion->query($query);
-    $consec = $cons->fetch_array();
-    $sqlcampana = 'INSERT INTO campana(id_cartera,consec,id_proceso,campana)VALUES("'.$id_cartera.'","'.$consec['consec'].'","9","2")';
+    //$query='SELECT ifnull(max(consec),0)+1 FROM campana WHERE id_cartera="'.$id_cartera.'" AND campana="2" ';
+    //$cons = $conexion->query($query);
+    //$consec = $cons->fetch_array();
+    $sqlcampana = 'INSERT INTO campana(id_cartera,consec,id_proceso,campana)VALUES("'.$id_cartera.'","2","9","2")';
 
     $ruta = $conexion->query($sql);
     $rutas = $conexion->query($sqls);
