@@ -14,11 +14,27 @@
           a.firma_aviso_privacidad,
           a.nuevo_contrato,
           a.estatus,
-          a.fecha_entrega
+          a.fecha_entrega,
+          a.promesa,
+          a.fechaEsperada,
+          a.fechaCierre,
+          a.coment_promesa,
+          b.id_cat,
+          c.nom_cat,
+          concat(d.nombre, ' ', d.ap_paterno) as nombre
         from
-          proceso_cartera a
+          proceso_cartera a,
+          procesos b,
+          categoria c,
+          usuario d
         where
           not exists (select bb.estatus from proceso_cartera bb where a.id_cartera=bb.id_cartera and bb.estatus >= 1 )
+        and
+          a.id_proceso = b.id_proceso
+      	and
+          b.id_cat = c.id_cat
+      	and
+          c.id_cat = d.id_cat
     ";
 	$rows = array();
 

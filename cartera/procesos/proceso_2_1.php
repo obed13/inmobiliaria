@@ -1,4 +1,4 @@
-<?php  
+<?php
 	$sql = "SELECT DATE_FORMAT(a.fecha_inicio, '%d-%m-%Y') fecha, a.fecha_entrega, a.cita_propiedad, a.comment_preliminar FROM proceso_cartera a WHERE id_cartera='$id' ";
 	$resultado = $conexion->query($sql);
 	$row = $resultado->fetch_array();
@@ -26,22 +26,22 @@
 				<option value="DEPARTAMENTO">DEPARTAMENTO</option>
 				<option value="OFICINA">OFICINA</option>
 			</select>
-			con Terreno de <input type="text" class="form-control" name="terreno_m" id="terreno_m" placeholder="metros" > m2, 
-			con dimensiones de terreno <input type="text" class="form-control" name="dimension_1" id="dimension_1" placeholder="dimension" >m 
-			por <input type="text" class="form-control" name="dimension_2" id="dimension_2" placeholder="dimension" >m, 
-			con construccion de <input type="text" class="form-control" name="construccion_m" id="construccion_m" placeholder="metros" >m2, 
-			con <input type="text" class="form-control" name="recamaras" id="recamaras" placeholder="Cuantas Recamaras?" > Recamaras, 
-			<input type="text" class="form-control" name="bano" id="bano" placeholder="Baños" > Baños, 
-			<input type="text" class="form-control" name="nivel" id="nivel" placeholder="niveles" > niveles, 
-			ampliacion <input type="text" class="form-control" name="ampli" id="ampli" placeholder="metro" >m2, 
-			Terreno excedente <input type="text" class="form-control" name="excendente" id="excendente" placeholder="metros" >m2, 
-			Material de construccion <input type="text" class="form-control" name="material" id="material" placeholder="material" >, 
-			cuenta con aislamiento? <input type="text" class="form-control" name="resp_1" id="resp_1" placeholder="si o no" >, 
-			Amueblada <input type="text" class="form-control" name="resp_2" id="resp_2" placeholder="si o no" >, 
-			Semi amueblada <input type="text" class="form-control" name="resp_3" id="resp_3" placeholder="si o no" >, 
-			Gasto Máximo de Energia Eléctrica en Verano <input type="text" class="form-control" name="luz" id="luz" placeholder="$$" >. 
-			Con equipo y accesorios adiccionales como se describe a continuación: 
-			<br><textarea class="form-control" name="descripcion_1" id="descripcion_1" cols="100" rows="3" ></textarea>.	
+			con Terreno de <input type="text" class="form-control" name="terreno_m" id="terreno_m" placeholder="metros" > m2,
+			con dimensiones de terreno <input type="text" class="form-control" name="dimension_1" id="dimension_1" placeholder="dimension" >m
+			por <input type="text" class="form-control" name="dimension_2" id="dimension_2" placeholder="dimension" >m,
+			con construccion de <input type="text" class="form-control" name="construccion_m" id="construccion_m" placeholder="metros" >m2,
+			con <input type="text" class="form-control" name="recamaras" id="recamaras" placeholder="Cuantas Recamaras?" > Recamaras,
+			<input type="text" class="form-control" name="bano" id="bano" placeholder="Baños" > Baños,
+			<input type="text" class="form-control" name="nivel" id="nivel" placeholder="niveles" > niveles,
+			ampliacion <input type="text" class="form-control" name="ampli" id="ampli" placeholder="metro" >m2,
+			Terreno excedente <input type="text" class="form-control" name="excendente" id="excendente" placeholder="metros" >m2,
+			Material de construccion <input type="text" class="form-control" name="material" id="material" placeholder="material" >,
+			cuenta con aislamiento? <input type="text" class="form-control" name="resp_1" id="resp_1" placeholder="si o no" >,
+			Amueblada <input type="text" class="form-control" name="resp_2" id="resp_2" placeholder="si o no" >,
+			Semi amueblada <input type="text" class="form-control" name="resp_3" id="resp_3" placeholder="si o no" >,
+			Gasto Máximo de Energia Eléctrica en Verano <input type="text" class="form-control" name="luz" id="luz" placeholder="$$" >.
+			Con equipo y accesorios adiccionales como se describe a continuación:
+			<br><textarea class="form-control" name="descripcion_1" id="descripcion_1" cols="100" rows="3" ></textarea>.
 	  	</div>
 	</div>
 	<div class="panel panel-primary">
@@ -49,8 +49,10 @@
 	    	<h3 class="panel-title">Condiciones legales del inmueble:</h3>
 	  	</div>
 	  	<div class="panel-body">
-	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="lugar" id="lugar" placeholder="Direccion" >
-	  		e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" placeholder="A nombre de:" >
+	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="gravamen" id="gravamen" placeholder="CON o SIN" > gravamen
+	  		<select name="opcion" id="opcion" class="form-control"> <option value="">-- Seleccione --</option>
+	  		<option value="Infonavit">Infonavit</option>
+	  		<option value="Bancaria">Bancaria</option></select> por la cantidad de <input type="text" name="cantidad" id="cantidad" class="form-control" placeholder="$$$"> e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" placeholder="A nombre de:" >
 	  	</div>
 	 </div>
 	 <div class="panel panel-primary">
@@ -83,15 +85,21 @@
 		<input type="date" class="form-control" <?php if($proceso == false) { ?> disabled <?php } ?> name="fecha_entrega" id="fecha_entrega" value="<?php echo $row['fecha_entrega']; ?>">
 		<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 		<br>
-		<input type="submit" class="btn btn-success" <?php if($proceso == false) { ?> disabled <?php } ?> id="submit_fecha" value="Cambiar Fecha Entrega">
+		<input type="submit" class="btn btn-success" <?php if($proceso == false) { ?> disabled <?php } ?> id="submit_fecha" value="Guardar Fecha de Entrega">
 		<br>
 		<div id="result_fecha"></div>
 	</form>
 </div>
 <script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery.mask.min.js"></script>
 <script>
 	$(function() {
-		 
+//=========================================================================//
+
+  $('#cantidad').mask('000,000,000.00', {reverse: true});
+  $('#luz').mask('000,000,000.00', {reverse: true});
+  $('#precio').mask('000,000,000.00', {reverse: true});
+
 //=========================================================================//
 		$("#submit_fecha").on('click', function(e) {
 			e.preventDefault();
@@ -125,7 +133,6 @@
 			.always(function() {
 				console.log("complete");
 			});
-			
 		});
 	});
 </script>

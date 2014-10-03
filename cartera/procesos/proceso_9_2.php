@@ -1,5 +1,5 @@
 <?php  
-	$sql = "SELECT DATE_FORMAT(a.fecha_inicio, '%d-%m-%Y') fecha, a.fecha_entrega,datediff(a.contrato_fin, a.contrato_inicio) as diferencia FROM proceso_cartera a WHERE id_cartera='$id' ";
+	$sql = "SELECT precio_dueno,precio_sugerido,DATE_FORMAT(a.fecha_inicio, '%d-%m-%Y') fecha, a.fecha_entrega,datediff(a.contrato_fin, a.contrato_inicio) as diferencia FROM proceso_cartera a WHERE id_cartera='$id' ";
 	$resultado = $conexion->query($sql);
 	$row = $resultado->fetch_array();
 	$sqlcat = "SELECT nom_cat FROM categoria WHERE id_cat='3' ";
@@ -35,6 +35,8 @@
 </div>
 <div class="col-xs-12 col-md-4">
 	<a href="javascript:void(0)" data-toggle='modal' data-target='.reporte' class="btn btn-primary">Ver Reporte</a>
+	<br><br>
+	<a href="javascript:void(0)" data-toggle='modal' data-target='.precio' class="btn btn-warning">Ver Precios</a>
 	<br>
 	<form action="update_fecha.php" method="POST" class="form-inline" id="form_fecha" name="form_fecha">
 		<label for="fecha_entrega">Fecha de Entrega</label>
@@ -87,9 +89,40 @@
   </div>
 </div>
 <!-- Fin Dialogo Reporte -->
+<!--  Inicio Dialogo Precio -->
+<div class="modal fade precio" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Precio de la Cartera</h4>
+      </div>
+      <div class="modal-body">
+      <form action="">
+      	<label for="precio_dueno">Precio Dueño:</label>
+      	<br>
+      	<input type="text" id="precio_dueno" name="precio_dueno" class="form-control" value="<?php echo $row['precio_dueno']; ?>" />
+      	<br>
+      	<label for="precio_sugerido">Precio Sugerido:</label>
+      	<br>
+      	<input type="text" id="precio_sugerido" name="precio_sugerido" class="form-control" value="<?php echo $row['precio_sugerido']; ?>" />
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Dialogo Reporte -->
 <script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery.mask.min.js"></script>
 <script>
 	$(function() {
+//=========================================================================//
+
+  $('#new_cash').mask('000,000,000.00', {reverse: true});
+  $('#precio_dueno').mask('000,000,000.00', {reverse: true});
+  $('#precio_sugerido').mask('000,000,000.00', {reverse: true});
+
+//=========================================================================//
 		$("#new_cash").hide();
 		$("#new_contrato").hide();
 

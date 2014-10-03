@@ -37,7 +37,7 @@
     	$sql = 'UPDATE proceso_cartera SET id_proceso="7",elab_contrato="'.$elab_contrato.'",recabar_firmas="'.$recabar_firmas.'",archivo_firma="'.$destino.'",firma_aviso_privacidad="'.$firma_aviso_privacidad.'",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sql2 = 'UPDATE proceso_cartera SET contrato_inicio="'.$contrato_inicio.'",contrato_fin="'.$contrato_fin.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sql3 = "INSERT INTO mls(id_cartera,id_proceso_mls,a1)VALUES('".$id_cartera."','1','1')";
-    
+
       $ruta = $conexion->query($sql);
     	$ruta = $conexion->query($sql2);
       $ruta = $conexion->query($sql3);

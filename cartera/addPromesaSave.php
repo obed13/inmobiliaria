@@ -6,9 +6,10 @@
 	$promesa = $_POST['promesa'] ;
 	$fechaEsperada = $_POST['fechaEsperada'] ;
 	$fechaCierre = $_POST['fechaCierre'] ;
+	$coment_promesa = $_POST['coment_promesa'];
 
 
-	$sql = "UPDATE proceso_cartera SET promesa='".$promesa."',fechaEsperada='".$fechaEsperada."',fechaCierre='".$fechaCierre."' WHERE id_cartera='".$id_cartera."' ";
+	$sql = "UPDATE proceso_cartera SET promesa='".$promesa."',fechaEsperada='".$fechaEsperada."',fechaCierre='".$fechaCierre."',coment_promesa='".$coment_promesa."' WHERE id_cartera='".$id_cartera."' ";
 
 	$resultado = $conexion->query($sql);
 

@@ -53,7 +53,7 @@
     <input type="date" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="fecha_entrega" id="fecha_entrega" value="<?php echo $row['fecha_entrega']; ?>">
     <input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
     <br>
-    <input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-success" id="submit_fecha" value="Cambiar Fecha Entrega">
+    <input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-success" id="submit_fecha" value="Guardar Fecha de Entrega">
     <br>
     <div id="result_fecha"></div>
   </form>

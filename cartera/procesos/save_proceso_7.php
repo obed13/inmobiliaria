@@ -1,4 +1,4 @@
-<?php  
+<?php
 	require_once '../../conexion.php';
   	$conexion = conectar();
 
@@ -44,5 +44,4 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-    
 ?>

@@ -1,4 +1,4 @@
-<?php  
+<?php
 	  require_once '../../conexion.php';
   	$conexion = conectar();
 
@@ -20,7 +20,7 @@
     $resp_3         = $_POST['resp_3'];
     $luz            = $_POST['luz'];
     $descripcion_1  = $_POST['descripcion_1'];
-    $lugar          = $_POST['lugar'];
+    $gravamen       = $_POST['gravamen'];
     $titular        = $_POST['titular'];
     $ve_re          = $_POST['ve_re'];
     $precio         = $_POST['precio'];
@@ -30,6 +30,8 @@
     $mes_inicio     = $_POST['mes_inicio'];
     $mes_fin        = $_POST['mes_fin'];
     $fecha_inicio   = date ( 'Y-m-d');
+    $opcion         = $_POST['opcion'];
+    $cantidad       = $_POST['cantidad'];
     $id = $_POST['id_user'];
 
       #Funcion de Mensaje para El Encargado del Proceso
@@ -45,11 +47,11 @@
       #10 = 3
       bandeja($id,$id_cartera,2,1);
       #Fin de Funcion
-      
+
       $fecha_entrega = strtotime ( '+5 day' , strtotime ( $fecha_inicio ) ) ;
       $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
-      $sql = 'INSERT INTO datos_inmuebles(id_cartera,tipo_mueble,terreno_2,dimension_1,dimension_2,construccion_m,recamaras,bano,nivel,ampli,excendente,material,resp_1,resp_2,resp_3,luz,descripcion_1,lugar,titular,ve_re,precio,comision,descripcion_2,meses,mes_inicio,mes_fin) VALUES ("'.$id_cartera.'","'.$tipo_mueble.'","'.$terreno_m.'","'.$dimension_1.'","'.$dimension_2.'","'.$construccion_m.'","'.$recamaras.'","'.$bano.'","'.$nivel.'","'.$ampli.'","'.$excendente.'","'.$material.'","'.$resp_1.'","'.$resp_2.'","'.$resp_3.'","'.$luz.'","'.$descripcion_1.'","'.$lugar.'","'.$titular.'","'.$ve_re.'","'.$precio.'","'.$comision.'","'.$descripcion_2.'","'.$meses.'","'.$mes_inicio.'","'.$mes_fin.'") ';
+      $sql = 'INSERT INTO datos_inmuebles(id_cartera,tipo_mueble,terreno_2,dimension_1,dimension_2,construccion_m,recamaras,bano,nivel,ampli,excendente,material,resp_1,resp_2,resp_3,luz,descripcion_1,gravamen,opcion,cantidad,titular,ve_re,precio,comision,descripcion_2,meses,mes_inicio,mes_fin) VALUES ("'.$id_cartera.'","'.$tipo_mueble.'","'.$terreno_m.'","'.$dimension_1.'","'.$dimension_2.'","'.$construccion_m.'","'.$recamaras.'","'.$bano.'","'.$nivel.'","'.$ampli.'","'.$excendente.'","'.$material.'","'.$resp_1.'","'.$resp_2.'","'.$resp_3.'","'.$luz.'","'.$descripcion_1.'","'.$gravamen.'","'.$opcion.'","'.$cantidad.'","'.$titular.'","'.$ve_re.'","'.$precio.'","'.$comision.'","'.$descripcion_2.'","'.$meses.'","'.$mes_inicio.'","'.$mes_fin.'") ';
 
       $sqls = 'UPDATE proceso_cartera SET id_proceso="3",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
 
@@ -61,5 +63,5 @@
       } else {
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
-    
+
 ?>

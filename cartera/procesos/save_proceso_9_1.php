@@ -1,4 +1,4 @@
-<?php  
+<?php
     require_once '../../conexion.php';
     $conexion = conectar();
 
@@ -27,7 +27,7 @@
 
     $sqls = 'UPDATE campana SET id_proceso="9.2",reporte_mensual="'.$reporte_mensual.'" WHERE id_cartera="'.$id_cartera.'" AND campana="2" ';
 
-    $sql = 'UPDATE proceso_cartera SET id_proceso="9.2",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'"  WHERE id_cartera="'.$id_cartera.'" ';
+    $sql = 'UPDATE proceso_cartera SET id_proceso="9.2",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
 
     $ruta = $conexion->query($sql);
     $rutas = $conexion->query($sqls);

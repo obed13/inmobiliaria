@@ -37,11 +37,11 @@
 			</tr>
 			<tr>
 				<td><label for="precio_dueno">Precio del Dueño:</label></td>
-				<td><input type="text" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="precio_dueno" id="precio_dueno" placeholder="Precio del Dueño" ></td>
+				<td><input type="text" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="precio_dueno" id="precio_dueno" placeholder="Precio del Dueño" required></td>
 			</tr>
 			<tr>
 				<td><label for="precio_sugerido">Precio Sugerido:</label></td>
-				<td><input type="text" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="precio_sugerido" id="precio_sugerido" placeholder="Precio Sugerido" ></td>
+				<td><input type="text" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="precio_sugerido" id="precio_sugerido" placeholder="Precio Sugerido" required></td>
 				<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 				<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
 			</tr>
@@ -69,14 +69,21 @@
 		<input type="date" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="fecha_entrega" id="fecha_entrega" value="<?php echo $row['fecha_entrega']; ?>">
 		<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">
 		<br>
-		<input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-success" id="submit_fecha" value="Cambiar Fecha Entrega">
+		<input type="submit" <?php if($proceso == false) { ?> disabled <?php } ?> class="btn btn-success" id="submit_fecha" value="Guardar Fecha de Entrega">
 		<br>
 		<div id="result_fecha"></div>
 	</form>
 </div>
 <script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery.mask.min.js"></script>
 <script>
 	$(function() {
+//=========================================================================//
+
+  $('#precio_dueno').mask('000,000,000.00', {reverse: true});
+  $('#precio_sugerido').mask('000,000,000.00', {reverse: true});
+
+//=========================================================================//
 		$("#submit_proceso").on('click', function(e) {
 			e.preventDefault();
 			/* Act on the event */

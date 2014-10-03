@@ -68,8 +68,10 @@
 	    	<h3 class="panel-title">Condiciones legales del inmueble:</h3>
 	  	</div>
 	  	<div class="panel-body">
-	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="lugar" id="lugar" placeholder="Direccion" value="<?php echo $dato['lugar']; ?>" >
-	  		e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" placeholder="A nombre de:" value="<?php echo $dato['titular']; ?>" >
+	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="gravamen" id="gravamen" placeholder="CON o SIN" value="<?php echo $dato['gravamen']; ?>"> gravamen
+	  		<select name="opcion" id="opcion" class="form-control">
+	  		<option value="Infonavit" <?php if ($dato['opcion'] == 'Infonavit') {echo "selected='selected' ";} ?> >Infonavit</option>
+	  		<option value="Bancaria" <?php if ($dato['opcion'] == 'Bancaria') {echo "selected='selected' ";} ?> >Bancaria</option></select> por la cantidad de <input type="text" name="cantidad" id="cantidad" class="form-control" value="<?php echo $dato['cantidad']; ?>" placeholder="$$$"> e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" value="<?php echo $dato['titular']; ?>" placeholder="A nombre de:" >
 	  	</div>
 	 </div>
 	 <div class="panel panel-primary">
@@ -77,8 +79,8 @@
 	    	<h3 class="panel-title">Condiciones para la gestión de venta o renta:</h3>
 	  	</div>
 	  	<div class="panel-body">
-	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="1" >
-	  		/ renta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="2" > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" value="<?php echo $dato['precio']; ?>" >
+	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" <?php if ($dato['ve_re'] == 1) {echo "checked";} ?> class="form-control" value="1" >
+	  		/ renta <input type="radio" name="ve_re" id="ve_re" <?php if ($dato['ve_re'] == 2) {echo "checked";} ?> class="form-control" value="2" > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" value="<?php echo $dato['precio']; ?>" >
 	  		con una comisión de venta del <input type="text" name="comision" id="comision" class="form-control" placeholder="Comision %" value="<?php echo $dato['comision']; ?>"  required >%, 
 	  		bajo las siguientes condiciones
 	  		<br><textarea name="descripcion_2" id="descripcion_2" cols="100" rows="3" class="form-control" ><?php echo $dato['descripcion_2']; ?></textarea>

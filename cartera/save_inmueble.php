@@ -1,5 +1,5 @@
 <?php
-require_once '../conexion.php';
+    require_once '../conexion.php';
   	$conexion = conectar();
 
 
@@ -29,10 +29,8 @@ require_once '../conexion.php';
     $meses          = $_POST['meses'];
     $mes_inicio     = $_POST['mes_inicio'];
     $mes_fin        = $_POST['mes_fin'];
-   
 
-      $fecha_entrega = strtotime ( '+5 day' , strtotime ( $fecha_inicio ) ) ;
-      $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
+
 
       $sql = 'UPDATE datos_inmuebles SET tipo_mueble="'.$tipo_mueble.'",terreno_2="'.$terreno_m.'",dimension_1="'.$dimension_1.'",dimension_2="'.$dimension_2.'",
       construccion_m="'.$construccion_m.'",recamaras="'.$recamaras.'",bano="'.$bano.'",nivel="'.$nivel.'",ampli="'.$ampli.'",excendente="'.$excendente.'",material="'.$material.'",

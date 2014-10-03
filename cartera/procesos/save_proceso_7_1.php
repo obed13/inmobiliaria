@@ -11,20 +11,6 @@
   	$c5 = $_POST['c5'];
     $id = $_POST['id_user'];
 
-    #Funcion de Mensaje para El Encargado del Proceso
-      #proceso = Encargado
-      #2 = 2
-      #3 = 2
-      #4 = 3
-      #5 = 2
-      #6 = 3
-      #7 = 4
-      #8 = 3
-      #9 = 3
-      #10 = 3
-      bandeja($id,$id_cartera,3,1);
-      #Fin de Funcion
-
     if ($a4 == "") {
       $sql = 'UPDATE mls SET a6="'.$a6.'", c2="'.$c2.'", c5="'.$c5.'" WHERE id_cartera="'.$id_cartera.'" ';
       $sqls = 'UPDATE proceso_cartera SET recabar_doc_mls="3" WHERE id_cartera="'.$id_cartera.'" ';
@@ -70,6 +56,19 @@
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
     }else{
+      #Funcion de Mensaje para El Encargado del Proceso
+      #proceso = Encargado
+      #2 = 2
+      #3 = 2
+      #4 = 3
+      #5 = 2
+      #6 = 3
+      #7 = 4
+      #8 = 3
+      #9 = 3
+      #10 = 3
+      bandeja($id,$id_cartera,3,1);
+      #Fin de Funcion
       $fecha_entrega = strtotime ( '+10 day' , strtotime ( $fecha_inicio ) ) ;
       $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
@@ -86,6 +85,4 @@
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
     }
-
-
 ?>

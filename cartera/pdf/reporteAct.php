@@ -6,11 +6,12 @@ $id = $_POST['id_cartera'];
 $fechaInicio = $_POST['fechaInicio'];
 $fechaFin = $_POST['fechaFin'];
 
-$sql = "SELECT *, DATE_FORMAT(fecha,'%d-%m-%Y') AS fecha
-		FROM actividades
-		WHERE id_cartera='".$id."'
-		AND fecha >= '".$fechaInicio."' AND fecha <= '".$fechaFin."'
-		ORDER BY fecha ASC";
+$sql = "SELECT *, DATE_FORMAT(a.fecha,'%d-%m-%Y') AS fecha, concat(b.nombre,' ',b.ap_paterno) as nombres
+		FROM actividades a, usuario b
+		WHERE a.id_cartera='".$id."'
+		AND a.id_user = b.id_user
+		AND a.fecha >= '".$fechaInicio."' AND a.fecha <= '".$fechaFin."'
+		ORDER BY a.fecha ASC";
 $consulta = $conexion->query($sql);
 $sql2 = "SELECT nom_cartera
 		FROM proceso_cartera
@@ -22,22 +23,33 @@ $content = '
 	<table border="1" style="border-collapse: collapse;">
 	  <thead>
 	  	<tr style="background:#A8A8A8;">
-	  		<th align="center" colspan="3">Cartera: '.$nom_cartera['nom_cartera'].'</th>
+	  		<th align="center" colspan="8">Cartera: '.$nom_cartera['nom_cartera'].'</th>
 	  	</tr>
 	    <tr style="background:#A8A8A8;">
+	    	<th align="center" width="50">status</th>
 	    	<th align="center" width="50">Tipo</th>
 	    	<th align="center" width="100">Fecha</th>
-	    	<th align="center" width="500">Comentario</th>
+	    	<th align="center" width="150">Comentario</th>
+	    	<th align="center" width="100">Encargado</th>
+	    	<th align="center" width="100">Interesado</th>
+	    	<th align="center" width="100">Telefono</th>
+	    	<th align="center" width="100">Email</th>
 	    </tr>
 	  </thead>
 	  <tbody>';
 	while ($row = $consulta->fetch_assoc()) {
 		if ($row['opcion'] == 1) {$opcion = 'Cita';} else {$opcion = 'Llamada';}
+		if ($row['id_tipo_cat'] == 1) {$act = 'Vendida';} elseif ($row['id_tipo_cat'] == 2) {$act = 'Rentada';}elseif ($row['id_tipo_cat'] == 3) {$act = 'Promesa';}elseif ($row['id_tipo_cat'] == 4) {$act = 'Negociacion';}
 $content .= '
 		<tr>
+		<td align="center">'.$act.'</td>
 		<td align="center">'.$opcion.'</td>
 		<td align="center">'.$row['fecha'].'</td>
 		<td>'.$row['comentario'].'</td>
+		<td align="center">'.$row['nombres'].'</td>
+		<td align="center">'.$row['interesado'].'</td>
+		<td align="center">'.$row['telefono'].'</td>
+		<td align="center">'.$row['email'].'</td>
 		</tr>
 		';
 	}
@@ -56,7 +68,7 @@ $content .= '
 
 
 require_once(dirname(__FILE__).'/html2pdf/html2pdf.class.php');
-$html2pdf = new HTML2PDF('P','A4','fr');
+$html2pdf = new HTML2PDF('L','A4','fr');
 $html2pdf->WriteHTML($content);
 $html2pdf->Output('reporteActividades.pdf');
 ?>

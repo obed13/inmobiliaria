@@ -1,4 +1,4 @@
-<?php  
+<?php
 	$sql = "SELECT DATE_FORMAT(a.fecha_inicio, '%d-%m-%Y') fecha, a.fecha_entrega,EXTRACT(DAY FROM a.contrato_inicio) inicio,EXTRACT(DAY FROM a.contrato_fin) fin FROM proceso_cartera a WHERE id_cartera='$id' ";
 	$resultado = $conexion->query($sql);
 	$row = $resultado->fetch_array();
@@ -27,7 +27,7 @@
 				<td><label for="publicitar_inicio">Aprobado</label></td>
 				<td colspan="2"><label for="publicitar_inicio">Fecha de Salir</label></td>
 			</tr>
-<?php while ($campana = $result->fetch_array()) { ?>			
+<?php while ($campana = $result->fetch_array()) { ?>
 			<tr>
 				<td><label for="bolsa_ampi">Bolsa Inmobiliaria AMPI y CRM, MLS: </label></td>
 				<td><input type="radio" <?php if($proceso == false) { ?> disabled <?php } ?> name="bolsa_ampi" <?php if ($campana['bolsa_ampi'] == 2) {?> checked="checked" <?php } ?> id="bolsa_ampi" value="2"></td>
@@ -36,7 +36,7 @@
 				<td><input type="date" class="form-control" name="bolsa_ampi_fecha" value="<?php echo $campana['bolsa_fecha']; ?>" id="bolsa_ampi_fecha" disabled></td>
 			</tr>
 			<tr>
-				<td><label for="portal_crm">10 Portales de Internet CRM: </label></td>
+				<td><label for="portal_crm">Portales de Internet CRM: </label></td>
 				<td><input type="radio" <?php if($proceso == false) { ?> disabled <?php } ?> name="portal_crm" <?php if ($campana['portal_crm'] == 2) {?> checked="checked" <?php } ?> id="portal_crm" value="2"></td>
 				<td><input type="radio" <?php if($proceso == false) { ?> disabled <?php } ?> name="portal_crm" <?php if ($campana['portal_crm'] == 1) {?> checked="checked" <?php } ?> id="portal_crm" value="1"></td>
 				<td><input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="portal_crm_btn" <?php if ($campana['portal_btn'] == 1) {?> checked="checked" <?php } ?> id="portal_crm_btn" value="1" onclick="document.formulario.portal_crm_fecha.disabled=!document.formulario.portal_crm_fecha.disabled" ></td>
@@ -91,7 +91,11 @@
 				<td><input type="checkbox" <?php if($proceso == false) { ?> disabled <?php } ?> name="evento_open_house_btn" <?php if ($campana['evento_btn'] == 1) {?> checked="checked" <?php } ?> id="evento_open_house_btn" value="1" onclick="document.formulario.evento_open_house_fecha.disabled=!document.formulario.evento_open_house_fecha.disabled" ></td>
 				<td><input type="date" class="form-control" name="evento_open_house_fecha" value="<?php echo $campana['evento_fecha']; ?>" id="evento_open_house_fecha" disabled></td>
 			</tr>
-<?php } ?>			
+			<tr>
+				<td><label for="otros">Otros:</label></td>
+				<td colspan="4"><textarea name="otros" class="form-control" id="otros" cols="60" rows="5"><?php echo $campana['otros']; ?></textarea></td>
+			</tr>
+<?php } ?>
 			<tr>
 				<td colspan="5">
 					<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>">

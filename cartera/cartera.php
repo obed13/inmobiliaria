@@ -14,13 +14,16 @@
       a.recabar_doc_mls,
       a.firma_aviso_privacidad,
       a.nuevo_contrato,
-      a.estatus
+      a.estatus,
+      a.id_usuarioRelacion
     from
       proceso_cartera a
     where
-      a.id_cartera = ".$id." 
+      a.id_cartera = ".$id."
   ";
   $resultado = $conexion->query($sql);
+  $sqlrelacion = "SELECT * FROM usuariorelacion";
+  $consulta = $conexion->query($sqlrelacion);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +39,8 @@
 </head>
 <body>
 
-    <?php 
-      include_once 'menu_bar.php'; 
+    <?php
+      include_once 'menu_bar.php';
 
       while ($row = $resultado->fetch_array()) {
     ?>
@@ -54,9 +57,6 @@
                     <span class="icon32 icon-color icon-gear"></span>
                     <div>Proceso</div>
                     <div></div>
-                    <?php //if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
-                    <!--<div>507</div>-->
-                    <!--<span class="notification">6</span>-->
                   </a>
                 </div>
 
@@ -65,9 +65,6 @@
                     <span class="icon32 icon-color icon-cancel"></span>
                     <div>Cancelar</div>
                     <div></div>
-                    <?php //if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
-                    <!--<div>507</div>-->
-                    <!--<span class="notification">6</span>-->
                   </a>
                 </div>
               <?php if ($row['recabar_doc_mls'] == 3 || $row['recabar_doc_mls'] == 2) { ?>
@@ -76,9 +73,6 @@
                     <span class="icon32 icon-color icon-script"></span>
                     <div>MLS</div>
                     <div><?php if ($row['recabar_doc_mls']==3) { echo "<label class='label label-info'>MLS Express</label>"; }elseif ($row['recabar_doc_mls']==2) { echo "<label class='label label-danger'>MLS (No Terminado)</label>"; }elseif ($row['recabar_doc_mls']==1) { echo "<label class='label label-success'>MLS</label>"; } ?></div>
-                    <?php //if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
-                    <!--<div>507</div>-->
-                    <!--<span class="notification">6</span>-->
                   </a>
                 </div>
               <?php } if ($row['nuevo_contrato'] == 'si') { ?>
@@ -87,9 +81,6 @@
                     <span class="icon32 icon-color icon-compose"></span>
                     <div>Contrato</div>
                     <div></div>
-                    <?php //if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
-                    <!--<div>507</div>-->
-                    <!--<span class="notification">6</span>-->
                   </a>
                 </div>
               <?php } if ($row['id_proceso'] >= 2.1) { ?>
@@ -98,9 +89,6 @@
                     <span class="icon32 icon-color icon-profile"></span>
                     <div>Datos de Inmueble</div>
                     <div></div>
-                    <?php //if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
-                    <!--<div>507</div>-->
-                    <!--<span class="notification">6</span>-->
                   </a>
                 </div>
               <?php } ?>
@@ -111,6 +99,15 @@
                     <div></div>
                   </a>
                 </div>
+                <?php if (isset($row['id_usuarioRelacion']) == 0) { ?>
+                <div class="col-xs-12 col-md-3">
+                  <a data-rel="tooltip" class="well span3 top-block"data-toggle='modal' data-target='.relacion' href="javascript:void(0)">
+                    <span class="icon32 icon-color icon-user"></span>
+                    <div>Referente de Cartera</div>
+                    <div></div>
+                  </a>
+                </div>
+                <?php } ?>
               </div>
             </div>
         </div>
@@ -141,7 +138,37 @@
     </div>
   </div>
 </div>
+<!--  Inicio Dialogo Relacion Cartera -->
+<div class="modal fade relacion" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Relacion con Cartera</h4>
+      </div>
+      <div class="modal-body">
+          <form action="relacionCartera.php" method="POST" id="relacion" name="relacion" >
+          <input type="hidden" name="id_cartera" value="<?php echo $row['id_cartera']; ?>">
 <?php } ?>
+            <label for="relacionCartera">Usuario Relacionado:</label>
+            <br>
+            <select name="relacionCartera" id="relacionCartera" class="form-control" required>
+              <option value="">....Seleccione....</option>
+          <?php
+            while ($row = $consulta->fetch_assoc()) {
+              echo "<option value=".$row['id_usuarioRelacion'].">".$row['nombre']." ".$row['paterno']." ".$row['materno']."</option>";
+            }
+          ?>
+            </select>
+            <br>
+            <input type="submit" class="btn btn-primary" id="btnRelacion" value="Aceptar">
+            <br>
+            <div id="result"></div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Fin Dialogo Reporte -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -150,3 +177,39 @@
     <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+$(function() {
+  $('#btnRelacion').on('click', function(e) {
+    e.preventDefault();
+    /* Act on the event */
+    var datos = $("#relacion").serialize();
+
+        $.ajax({
+          url: 'relacionCartera.php',
+          type: 'POST',
+          dataType: 'json',
+          data: datos,
+          success: function(data){
+            if(data.msj == true) {
+                    $("#result").fadeIn('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
+                    $("#result").fadeOut('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
+                  }else{
+                    $("#result").html("<div class='alert alert-danger'>No se pudo Guardar!</div>");
+                  }
+          },
+          beforeSend: function(){
+            $("#result").html("<div class='alert-info form-control'><img src='../img/ajax-loader.gif' /> Loading...</div>");
+          }
+        })
+        .done(function() {
+          console.log("success");
+        })
+        .fail(function() {
+          console.log("error");
+        })
+        .always(function() {
+          console.log("complete");
+        });
+  });
+});
+</script>

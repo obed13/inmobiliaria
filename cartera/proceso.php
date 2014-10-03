@@ -47,6 +47,7 @@
 <script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.deskform.js"></script>
+
 </head>
 <body>
 	<?php include_once 'menu_bar.php'; ?>

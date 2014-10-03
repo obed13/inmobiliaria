@@ -3,6 +3,8 @@
   require_once '../conexion.php';
   require_once '../sesion.php';
   $conexion = conectar();
+  $sql ="SELECT * FROM usuario";
+  $consulta = $conexion->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,62 +29,6 @@
           <h2 class="sub-header">Listado</h2>
           <div class="table-responsive">
             <div id="table_lista_carteras"></div>
-            <!--<table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Cartera</th>
-                  <th>Dias para Proceso</th>
-                  <th>Estatus</th>
-                  <th>Estatus MLS</th>
-                  <th colspan="4">Accion</th>
-                </tr>
-              </thead>
-              <tbody>
-          <?php
-          $sql = "
-            select
-              a.id_cartera,
-              a.nom_cartera,
-              DATE_FORMAT(a.fecha_entrega, '%d-%m-%Y') fecha,
-              datediff(a.fecha_entrega, a.fecha_inicio) as dias,
-              a.id_proceso,
-              a.recabar_doc_mls,
-              a.firma_aviso_privacidad,
-              a.nuevo_contrato,
-              a.estatus,
-              a.fecha_entrega
-            from
-              proceso_cartera a
-            where
-              not exists (select bb.estatus from proceso_cartera bb where a.id_cartera=bb.id_cartera and bb.estatus >= 1 )
-          ";
-          $resultado = $conexion->query($sql);
-          $no = 0;
-          while ($row = $resultado->fetch_array()) {
-            $no++;
-            $fecha=$row['fecha_entrega'];
-            $hoy = date("Y-m-d");
-            //$segundos=substr($fecha, -2);
-            //$now = substr($hoy, -2);
-            //$resta = $segundos - $now;
-            $datetime1 = new DateTime($hoy);
-            $datetime2 = new DateTime($fecha);
-            $interval = $datetime1->diff($datetime2);
-            $resta = $interval->format('%a');
-          ?>
-                <tr>
-                  <td><?php echo $no; ?><input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $row['id_cartera']; ?>"></td>
-                  <td><?php echo $row['nom_cartera']; ?></td>
-                  <td><?php if($resta <= 0){ echo "<div class='label alert-danger'>".$resta." Dias ATRASADO</div>"; }elseif ($resta == 1){ echo "<div class='label alert-danger'>Te quedan ".$resta." Dias</div>"; }elseif ($resta == 2){ echo "<div class='label alert-danger'>Te quedan ".$resta." Dias</div>"; } else{ echo $resta." Dias"; } ?></td>
-                  <td><?php if ($row['estatus']==1) { echo "<label class='label label-success'>Completado</label>"; }elseif ($row['estatus']==2) { echo "<label class='label label-danger'>Cancelado</label>"; }else{echo "<label class='label label-warning'>En Tramite</label>";} ?></td>
-                  <td><?php if ($row['recabar_doc_mls']==3) { echo "<label class='label label-info'>MLS Express</label>"; }elseif ($row['recabar_doc_mls']==2) { echo "<label class='label label-danger'>MLS (No Terminado)</label>"; }elseif ($row['recabar_doc_mls']==1) { echo "<label class='label label-success'>MLS</label>"; } ?></td>
-                  <td><a href="cartera.php?id=<?php echo $row['id_cartera']; ?>" class="btn btn-primary">Cartera</a></td>
-                  <td><a href="javascript:void(0)" id="btn_dialog" class="btn btn-warning">Promesa</a></td>
-                </tr>
-          <?php } ?>
-              </tbody>
-            </table>-->
           </div>
         </div>
       </div>
@@ -115,7 +61,11 @@
     <br>
     <label for="fechaCierre">Fecha de Cierre:</label>
     <br>
-    <input type="date" name="fechaCierre" id="fechaCierre" class="form-control" required >
+    <input type="date" name="fechaCierre" id="fechaCierre" class="form-control"  />
+    <br>
+    <label for="coment_promesa">Comentario</label>
+    <br>
+    <textarea name="coment_promesa" id="coment_promesa" cols="40" rows="5"></textarea>
     <input type="hidden" name="id_carteraPromesa" id="id_carteraPromesa">
       </div>
       <div class="modal-footer">
@@ -130,38 +80,71 @@
 <!-- Fin Dialogo -->
 <!--  Inicio Dialogo Actividad -->
 <div class="modal fade actividad" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Actividad</h4>
       </div>
       <div class="modal-body">
-        <form action="addActividadSave.php" method="POST" id="formActividad">
-    <label for="tipoActividad">Tipo:</label>
-    <br>
-    <select name="tipoActividad" id="tipoActividad" class="form-control" required >
-      <option value="">-- Seleccione --</option>
-      <option value="1">Venta</option>
-      <option value="2">Servico a Clientes</option>
-    </select>
-    <br>
-    <label for="opcionActividad">Opcion:</label>
-    <br>
-    <select name="opcionActividad" id="opcionActividad" class="form-control" required >
-      <option value="">-- Seleccione --</option>
-      <option value="1">Cita</option>
-      <option value="2">Llamada</option>
-    </select>
-    <br>
-    <label for="fechaActividad">Fecha:</label>
-    <br>
-    <input type="date" name="fechaActividad" id="fechaActividad" class="form-control" required >
-    <br>
-    <label for="comentarioAcitividad">Comentario:</label>
-    <br>
-    <textarea name="comentarioAcitividad" id="comentarioAcitividad" cols="40" rows="5"></textarea>
-    <input type="hidden" name="id_carteraActividad" id="id_carteraActividad">
+        <form action="addActividadSave.php" class="form-inline" role="form" method="POST" id="formActividad">
+          <div class="form-group">
+          <label for="tipoActividad">Tipo:</label>
+          <br>
+          <select name="tipoActividad" id="tipoActividad" class="form-control" required >
+            <option value="">-- Seleccione --</option>
+            <option value="">-- Seleccione --</option>
+            <option value="1">Vendida</option>
+            <option value="2">Rentada</option>
+            <option value="3">Promesa</option>
+            <option value="4">Negociacion</option>
+          </select>
+          </div>
+          <div class="form-group">
+          <label for="opcionActividad">Opcion:</label>
+          <br>
+          <select name="opcionActividad" id="opcionActividad" class="form-control" required >
+            <option value="">-- Seleccione --</option>
+            <option value="1">Cita</option>
+            <option value="2">Llamada</option>
+          </select>
+          </div>
+          <div class="form-group">
+          <label for="usuario">Quien lo hace:</label>
+          <br>
+          <select name="usuario" id="usuario" class="form-control" required >
+            <option value="">-- Seleccione --</option>
+            <?php while ($row = $consulta->fetch_assoc()) {
+              echo "<option value=".$row['id_user'].">".$row['nombre']." ".$row['ap_paterno']." ".$row['ap_materno']."</option>";
+            } ?>
+          </select>
+          </div>
+          <div class="form-group">
+          <label for="fechaActividad">Fecha:</label>
+          <br>
+          <input type="date" name="fechaActividad" id="fechaActividad" class="form-control" required >
+          </div>
+          <br>
+          <div class="form-group">
+          <label for="interesado">Nombre del Interesado:</label>
+          <br>
+          <input type="text" name="interesado" id="interesado" class="form-control" placeholder="Nombre de Interesado" />
+          </div>
+          <div class="form-group">
+          <label for="tel">Telefono:</label>
+          <br>
+          <input type="text" name="tel" id="tel" class="form-control" placeholder="Telefono" />
+          </div>
+          <div class="form-group">
+          <label for="email">Email:</label>
+          <br>
+          <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electronico" />
+          </div>
+          <br>
+          <label for="comentarioAcitividad">Comentario:</label>
+          <br>
+          <textarea name="comentarioAcitividad" class="form-control" id="comentarioAcitividad" cols="40" rows="5"></textarea>
+          <input type="hidden" name="id_carteraActividad" id="id_carteraActividad">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -199,7 +182,7 @@ restaFechas = function(f1,f2)
 //restaFechas(f1,f2);
 //=============== Ajax Carteras =========================//
 var f = '<?php $hoy = date("Y-m-d"); echo $hoy; ?>';
-
+ setInterval(function() {
 $.ajax({
   url: 'ajaxListCartera.php',
   type: 'POST',
@@ -210,21 +193,20 @@ $.ajax({
           var html = "";
             var num = 0;
             html ="<table border='0' class='table table-striped' id='table_cartera'>";
-            html +="<thead><tr><th>#</th><th>Cartera</th><th>Dias para Proceso</th><th>Estatus</th><th>Estatus MLS</th><th colspan='4'>Accion</th></tr></thead><tbody>";
+            html +="<thead><tr><th>#</th><th>Cartera</th><th>Vencimiento</th><th>Encargado</th><th>Estatus MLS</th><th colspan='4'>Accion</th></tr></thead><tbody>";
             for (i = 0; i < data.data.length; i++) {
               var fecha = restaFechas(f,data.data[i].fecha_entrega);
               if(fecha <= 0){dias = "<div class='label alert-danger'>"+fecha+" Dias ATRASADO</div>";}else if(fecha == 1){dias = "<div class='label alert-danger'>Te Quedan "+fecha+" Dias</div>";}else if(fecha == 2){dias= "<div class='label alert-danger'>Te Quedan "+fecha+" Dias</div>";}else{dias = fecha+" Dias";}
-              if (data.data[i].estatus==1) { estatus = "<label class='label label-success'>Completado</label>"; }if (data.data[i].estatus==2) { estatus = "<label class='label label-danger'>Cancelado</label>"; }else{ estatus = "<label class='label label-warning'>En Tramite</label>";}
               if (data.data[i].recabar_doc_mls==3) { recabar_doc_mls = "<label class='label label-info'>MLS Express</label>"; }else if (data.data[i].recabar_doc_mls==2) { recabar_doc_mls = "<label class='label label-danger'>MLS (No Terminado)</label>"; }else if (data.data[i].recabar_doc_mls==1) { recabar_doc_mls = "<label class='label label-success'>MLS</label>"; }else { recabar_doc_mls = ""; }
               num++;
-              html += "<tr class='lista' id_cartera='"+data.data[i].id_cartera+"' nom_cartera='"+data.data[i].nom_cartera+"' fecha='"+data.data[i].fecha+"' dias='"+data.data[i].dias+"' id_proceso='"+data.data[i].id_proceso+"' recabar_doc_mls='"+data.data[i].recabar_doc_mls+"' firma_aviso_privacidad='"+data.data[i].firma_aviso_privacidad+"' nuevo_contrato='"+data.data[i].nuevo_contrato+"' estatus='"+data.data[i].estatus+"' fecha_entrega='"+data.data[i].fecha_entrega+"' >";
+              html += "<tr class='lista' id_cartera='"+data.data[i].id_cartera+"' nom_cartera='"+data.data[i].nom_cartera+"' fecha='"+data.data[i].fecha+"' dias='"+data.data[i].dias+"' id_proceso='"+data.data[i].id_proceso+"' recabar_doc_mls='"+data.data[i].recabar_doc_mls+"' firma_aviso_privacidad='"+data.data[i].firma_aviso_privacidad+"' nuevo_contrato='"+data.data[i].nuevo_contrato+"' estatus='"+data.data[i].estatus+"' fecha_entrega='"+data.data[i].fecha_entrega+"' promesa='"+data.data[i].promesa+"' fechaEsperada='"+data.data[i].fechaEsperada+"' fechaCierre='"+data.data[i].fechaCierre+"' coment_promesa='"+data.data[i].coment_promesa+"' >";
               html += "<td>" + num + "</td>";
               html += "<td>" + data.data[i].nom_cartera + "</td>";
               html += "<td>" + dias + "</td>";
-              html += "<td>" + estatus + "</td>";
+              html += "<td><label class='label label-warning'>" + data.data[i].nombre + "</label></td>";
               html += "<td>" + recabar_doc_mls + "</td>";
               html += "<td><a href='cartera.php?id=" + data.data[i].id_cartera + "' class='btn btn-primary'>Cartera</a></td>";
-              html += "<td><a href='javascript:void(0)' data-toggle='modal' data-target='.bs-example-modal-sm' class='btn btn-warning'>Promesa</a></td>";
+              html += "<td><a href='javascript:void(0)' data-toggle='modal' data-target='.bs-example-modal-sm' class='btn btn-warning'>Estatus</a></td>";
               html += "<td><a href='javascript:void(0)' data-toggle='modal' data-target='.actividad' class='btn btn-info'>Actividad</a></td>";
               html += "<td><a href='pdf/index.php?id=" + data.data[i].id_cartera + "' target='_blank' class='btn btn-danger'>Reporte</a></td>";
               html += "</tr>";
@@ -234,9 +216,17 @@ $.ajax({
             $(".lista").on('click', function() {
 
             id_cartera   = $(this).attr("id_cartera");
+            promesa   = $(this).attr("promesa");
+            fechaEsperada   = $(this).attr("fechaEsperada");
+            fechaCierre   = $(this).attr("fechaCierre");
+            coment_promesa   = $(this).attr("coment_promesa");
 
             $("#id_carteraPromesa").val(id_cartera);
             $("#id_carteraActividad").val(id_cartera);
+            $("#promesa").val(promesa);
+            $("#fechaEsperada").val(fechaEsperada);
+            $("#fechaCierre").val(fechaCierre);
+            $("#coment_promesa").val(coment_promesa);
 
           });
         }
@@ -250,7 +240,7 @@ $.ajax({
 .always(function() {
   console.log("complete");
 });
-
+}, 1000);
 //=============== Fin Ajax Carteras =====================//
 //===============   Ajax   ==============================//
 $('#btnPromesa').on('click', function(e) {
