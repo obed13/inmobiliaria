@@ -29,7 +29,7 @@
 		<br><br>
 	</form>
 </div>
-<div class="col-md-3 col-md-offset-2">
+<div class="col-xs-12 col-md-3 col-md-offset-2">
 	<form action="update_fecha.php" method="POST" id="form_fecha" name="form_fecha">
 		<label for="fecha_inicio">Fecha de Inicio</label>
 		<br>

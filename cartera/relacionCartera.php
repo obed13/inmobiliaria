@@ -6,7 +6,7 @@
   $id_cartera = $_POST['id_cartera'];
   $relacion = $_POST['relacionCartera'];
 
-	$sql = "UPDATE proceso_cartera SET id_usuarioRelacion='".$relacion."' WHERE id_cartera='".$id_cartera."' ";
+	$sql = "UPDATE proceso_cartera SET id_relacion='".$relacion."' WHERE id_cartera='".$id_cartera."' ";
 	$int = $conexion->query($sql);
 
   if ($int) {

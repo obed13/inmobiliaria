@@ -52,7 +52,7 @@
         e.preventDefault();
         /* Act on the event */
         if ($("#nom_cartera").val() == '' ) {
-          $("#result").html("<div class='alert alert-danger'>Favor de Verificar Hay Un Campo Vacio!!</div>")
+          $("#result").html("<div class='alert alert-danger'>Favor de Verificar El Campo Esta Vacio!!</div>")
         }else{
           var datos = $("#form_post").serialize();
 
@@ -62,9 +62,12 @@
             dataType: 'json',
             data: datos,
             success: function (data) {
-            if(data.msj == true) {
+            if(data.msj == 1) {
               $("#nom_cartera").val('');
               $("#result").html("<div class='alert alert-success'>Se Guardo Exitosamente!</div><br /><a href='proceso.php?id="+ data.id_cartera +"' class='btn btn-warning'>ir a Proceso</a>");
+            }else if(data.msj == 3) {
+              $("#nom_cartera").val('');
+              $("#result").html("<div class='alert alert-warning'>Este <b>Nombre YA EXISTE</b> Favor de Cambiarlo!</div>");
             }else{
               $("#result").html("<div class='alert alert-danger'>No se pudo Guardar!</div>");
             }

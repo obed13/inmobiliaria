@@ -20,7 +20,6 @@
     $resp_3         = $_POST['resp_3'];
     $luz            = $_POST['luz'];
     $descripcion_1  = $_POST['descripcion_1'];
-    $lugar          = $_POST['lugar'];
     $titular        = $_POST['titular'];
     $ve_re          = $_POST['ve_re'];
     $precio         = $_POST['precio'];
@@ -29,12 +28,17 @@
     $meses          = $_POST['meses'];
     $mes_inicio     = $_POST['mes_inicio'];
     $mes_fin        = $_POST['mes_fin'];
+    $gravamen       = $_POST['gravamen'];
+    $moneda         = $_POST['moneda'];
+    $moneda2         = $_POST['moneda2'];
+    $cantidad       = $_POST['cantidad'];
+    $opcion         = $_POST['opcion'];
 
 
-
-      $sql = 'UPDATE datos_inmuebles SET tipo_mueble="'.$tipo_mueble.'",terreno_2="'.$terreno_m.'",dimension_1="'.$dimension_1.'",dimension_2="'.$dimension_2.'",
+//echo print_r($_POST);
+      $sql = 'UPDATE datos_inmuebles SET moneda="'.$moneda.'",moneda2="'.$moneda2.'",gravamen="'.$gravamen.'",tipo_mueble="'.$tipo_mueble.'",terreno_2="'.$terreno_m.'",dimension_1="'.$dimension_1.'",dimension_2="'.$dimension_2.'",
       construccion_m="'.$construccion_m.'",recamaras="'.$recamaras.'",bano="'.$bano.'",nivel="'.$nivel.'",ampli="'.$ampli.'",excendente="'.$excendente.'",material="'.$material.'",
-      resp_1="'.$resp_1.'",resp_2="'.$resp_2.'",resp_3="'.$resp_3.'",luz="'.$luz.'",descripcion_1="'.$descripcion_1.'",lugar="'.$lugar.'",titular="'.$titular.'",ve_re="'.$ve_re.'",
+      resp_1="'.$resp_1.'",resp_2="'.$resp_2.'",resp_3="'.$resp_3.'",luz="'.$luz.'",descripcion_1="'.$descripcion_1.'",titular="'.$titular.'",ve_re="'.$ve_re.'",
       precio="'.$precio.'",comision="'.$comision.'",descripcion_2="'.$descripcion_2.'",meses="'.$meses.'",mes_inicio="'.$mes_inicio.'",mes_fin="'.$mes_fin.'" WHERE id_cartera="'.$id_cartera.'" ';
 
       $ruta = $conexion->query($sql);

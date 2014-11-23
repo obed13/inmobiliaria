@@ -2,6 +2,7 @@
   session_start();
   require_once '../conexion.php';
   require_once '../sesion.php';
+  require_once 'funciones.php';
   $conexion = conectar();
   $sql ="SELECT * FROM usuario";
   $consulta = $conexion->query($sql);
@@ -16,19 +17,54 @@
   <link rel="stylesheet" href="../css/dashboard.css">
   <link rel="stylesheet" href="../css/dataTables.bootstrap.css">
   <link rel="stylesheet" href="../css/ui-lightness/jquery-ui.css">
+  <script src="../js/jquery-1.11.1.min.js"></script>
+  <script src="../js/jquery-ui.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.dataTables.min.js"></script>
+  <script src="../js/dataTables.bootstrap.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#fechaCierre").show().prop('readonly', true);
+    $("#fechaEsperada").show().prop('readonly', true);
+    $("#coment_promesa").show().prop('readonly', true);
+
+    $("#promesa").on("change", function() {
+       var valor = $("#promesa").val();
+       if (valor === "1" || valor === "2") {
+          $("#fechaCierre").show().prop('readonly', false);
+          $("#fechaEsperada").show().prop('readonly', true);
+          $("#coment_promesa").show().prop('readonly', true);
+          $("#fechaEsperada").val("");
+          $("#coment_promesa").val("");
+       }else if (valor === "0" ) {
+          $("#fechaCierre").show().prop('readonly', true);
+          $("#fechaEsperada").show().prop('readonly', true);
+          $("#coment_promesa").show().prop('readonly', true);
+          $("#fechaCierre").val("");
+          $("#fechaEsperada").val("");
+          $("#coment_promesa").val("");
+       } else {
+          // deshabilitamos
+          $("#fechaCierre").show().prop('readonly', true);
+          $("#fechaEsperada").show().prop('readonly', false);
+          $("#coment_promesa").show().prop('readonly', false);
+          $("#fechaCierre").val("");
+       }
+    });
+  });
+</script>
 </head>
 <body>
     <?php include_once 'menu_bar.php'; ?>
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <?php include_once 'menu.php'; ?>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">Listado</h2>
+          <h2 class="sub-header">LISTADO DISPONIBLE</h2>
           <div class="table-responsive">
-            <div id="table_lista_carteras"></div>
+          <div id="table_lista_carteras"></div>
           </div>
         </div>
       </div>
@@ -47,8 +83,9 @@
         <form action="addPromesaSave.php" method="POST" id="formPromesa">
     <label for="promesa">Tipo de Estatus:</label>
     <br>
-    <select name="promesa" id="promesa" class="form-control" required >
+    <select name="promesa" id="promesa" class="form-control" onchange="promesas(this)">
       <option value="">-- Seleccione --</option>
+      <option value="0">Ninguna</option>
       <option value="1">Vendida</option>
       <option value="2">Rentada</option>
       <option value="3">Promesa</option>
@@ -57,7 +94,7 @@
     <br>
     <label for="fechaEsperada">Fecha Esperada de Cierre:</label>
     <br>
-    <input type="date" name="fechaEsperada" id="fechaEsperada" class="form-control" required >
+    <input type="date" name="fechaEsperada" id="fechaEsperada" class="form-control"  >
     <br>
     <label for="fechaCierre">Fecha de Cierre:</label>
     <br>
@@ -88,18 +125,6 @@
       </div>
       <div class="modal-body">
         <form action="addActividadSave.php" class="form-inline" role="form" method="POST" id="formActividad">
-          <div class="form-group">
-          <label for="tipoActividad">Tipo:</label>
-          <br>
-          <select name="tipoActividad" id="tipoActividad" class="form-control" required >
-            <option value="">-- Seleccione --</option>
-            <option value="">-- Seleccione --</option>
-            <option value="1">Vendida</option>
-            <option value="2">Rentada</option>
-            <option value="3">Promesa</option>
-            <option value="4">Negociacion</option>
-          </select>
-          </div>
           <div class="form-group">
           <label for="opcionActividad">Opcion:</label>
           <br>
@@ -159,12 +184,6 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../js/jquery.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.dataTables.min.js"></script>
-    <script src="../js/dataTables.bootstrap.js"></script>
     <script type="text/javascript">
 $(function() {
 restaFechas = function(f1,f2)
@@ -182,7 +201,7 @@ restaFechas = function(f1,f2)
 //restaFechas(f1,f2);
 //=============== Ajax Carteras =========================//
 var f = '<?php $hoy = date("Y-m-d"); echo $hoy; ?>';
- setInterval(function() {
+
 $.ajax({
   url: 'ajaxListCartera.php',
   type: 'POST',
@@ -193,22 +212,24 @@ $.ajax({
           var html = "";
             var num = 0;
             html ="<table border='0' class='table table-striped' id='table_cartera'>";
-            html +="<thead><tr><th>#</th><th>Cartera</th><th>Vencimiento</th><th>Encargado</th><th>Estatus MLS</th><th colspan='4'>Accion</th></tr></thead><tbody>";
+            html +="<thead><tr><th>#</th><th>Cartera</th><th>Vencimiento</th><th>Encargado</th><th>Estatus</th><th>Estatus MLS</th><th>Accion</th><th></th><th></th><th></th></tr></thead><tbody>";
             for (i = 0; i < data.data.length; i++) {
               var fecha = restaFechas(f,data.data[i].fecha_entrega);
               if(fecha <= 0){dias = "<div class='label alert-danger'>"+fecha+" Dias ATRASADO</div>";}else if(fecha == 1){dias = "<div class='label alert-danger'>Te Quedan "+fecha+" Dias</div>";}else if(fecha == 2){dias= "<div class='label alert-danger'>Te Quedan "+fecha+" Dias</div>";}else{dias = fecha+" Dias";}
               if (data.data[i].recabar_doc_mls==3) { recabar_doc_mls = "<label class='label label-info'>MLS Express</label>"; }else if (data.data[i].recabar_doc_mls==2) { recabar_doc_mls = "<label class='label label-danger'>MLS (No Terminado)</label>"; }else if (data.data[i].recabar_doc_mls==1) { recabar_doc_mls = "<label class='label label-success'>MLS</label>"; }else { recabar_doc_mls = ""; }
+              if (data.data[i].promesa == 4) {promesa ="<label class='label label-success'>Negociacion</label>";}else if (data.data[i].promesa == 3) {promesa ="<label class='label label-success'>Promesa</label>"; }else if (data.data[i].promesa == 2) {promesa ="<label class='label label-success'>Rentada</label>"; }else if (data.data[i].promesa == 1) {promesa ="<label label class='label-success'>Vendida</label>"; }else { promesa = ""; }
               num++;
               html += "<tr class='lista' id_cartera='"+data.data[i].id_cartera+"' nom_cartera='"+data.data[i].nom_cartera+"' fecha='"+data.data[i].fecha+"' dias='"+data.data[i].dias+"' id_proceso='"+data.data[i].id_proceso+"' recabar_doc_mls='"+data.data[i].recabar_doc_mls+"' firma_aviso_privacidad='"+data.data[i].firma_aviso_privacidad+"' nuevo_contrato='"+data.data[i].nuevo_contrato+"' estatus='"+data.data[i].estatus+"' fecha_entrega='"+data.data[i].fecha_entrega+"' promesa='"+data.data[i].promesa+"' fechaEsperada='"+data.data[i].fechaEsperada+"' fechaCierre='"+data.data[i].fechaCierre+"' coment_promesa='"+data.data[i].coment_promesa+"' >";
               html += "<td>" + num + "</td>";
               html += "<td>" + data.data[i].nom_cartera + "</td>";
               html += "<td>" + dias + "</td>";
               html += "<td><label class='label label-warning'>" + data.data[i].nombre + "</label></td>";
+              html += "<td>" + promesa +"</td>";
               html += "<td>" + recabar_doc_mls + "</td>";
-              html += "<td><a href='cartera.php?id=" + data.data[i].id_cartera + "' class='btn btn-primary'>Cartera</a></td>";
-              html += "<td><a href='javascript:void(0)' data-toggle='modal' data-target='.bs-example-modal-sm' class='btn btn-warning'>Estatus</a></td>";
-              html += "<td><a href='javascript:void(0)' data-toggle='modal' data-target='.actividad' class='btn btn-info'>Actividad</a></td>";
-              html += "<td><a href='pdf/index.php?id=" + data.data[i].id_cartera + "' target='_blank' class='btn btn-danger'>Reporte</a></td>";
+              html += "<td><a href='cartera.php?id=" + data.data[i].id_cartera + "' class='btn btn-primary btn-sm'>Cartera</a></td>";
+              html += "<td><a href='javascript:void(0);' data-toggle='modal' data-target='.bs-example-modal-sm' class='btn btn-warning btn-sm' >Estatus</a></td>";
+              html += "<td><a href='javascript:void(0);' data-toggle='modal' data-target='.actividad' class='btn btn-info btn-sm'>Actividad</a></td>";
+              html += "<td><a href='pdf/index.php?id=" + data.data[i].id_cartera + "' target='_blank' class='btn btn-danger btn-sm'>Reporte</a></td>";
               html += "</tr>";
             }
             html += "</tbody></table>";
@@ -240,20 +261,19 @@ $.ajax({
 .always(function() {
   console.log("complete");
 });
-}, 1000);
+$('#table_cartera').dataTable();
 //=============== Fin Ajax Carteras =====================//
 //===============   Ajax   ==============================//
 $('#btnPromesa').on('click', function(e) {
   e.preventDefault();
   /* Act on the event */
 
-  if ($('#promesa').val() == '') {
-    $('#result').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
+  if ($('#promesa').val() == '') {}else{
+   /* $('#result').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
+  }
   }else if ($('#fechaEsperada').val() == '') {
     $('#result').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
-  }else if ($('#fechaCierre').val() == '') {
-    $('#result').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
-  }  else{
+  } else{*/
     var datos = $('#formPromesa').serialize();
 
     $.ajax({
@@ -270,6 +290,7 @@ $('#btnPromesa').on('click', function(e) {
         $("#promesa").val('');
         $("#fechaEsperada").val('');
         $("#fechaCierre").val('');
+        window.location ="list_cartera.php";
       }else{
         $("#result").html("<div class='alert alert-danger'>No Se Agrego a la Orden</div>");
         $("#result").fadeOut('5000');
@@ -291,11 +312,15 @@ $('#btnPromesa').on('click', function(e) {
 $('#btnActividad').on('click', function(e) {
   e.preventDefault();
   /* Act on the event */
-  if ($('#tipoActividad').val() == '') {
-    $('#resultActividad').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
-  }else if ($('#opcionActividad').val() == '') {
+  if ($('#opcionActividad').val() == '') {
     $('#resultActividad').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
   }else if ($('#fechaActividad').val() == '') {
+    $('#resultActividad').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
+  }else if ($('#interesado').val() == '') {
+    $('#resultActividad').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
+  }else if ($('#tel').val() == '') {
+    $('#resultActividad').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
+  }else if ($('#email').val() == '') {
     $('#resultActividad').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
   }else if ($('#comentarioAcitividad').val() == '') {
     $('#resultActividad').html("<div class='alert alert-danger'>Hay Campos Vacios!!!</div>");
@@ -317,6 +342,9 @@ $('#btnActividad').on('click', function(e) {
         $("#tipoActividad").val('');
         $("#opcionActividad").val('');
         $("#fechaActividad").val('');
+        $("#interesado").val('');
+        $("#tel").val('');
+        $("#email").val('');
         $("#comentarioAcitividad").val('');
       }else{
         $("#resultActividad").html("<div class='alert alert-danger'>No Se Agrego a la Orden</div>");
@@ -324,6 +352,9 @@ $('#btnActividad').on('click', function(e) {
         $("#tipoActividad").val('');
         $("#opcionActividad").val('');
         $("#fechaActividad").val('');
+        $("#interesado").val('');
+        $("#tel").val('');
+        $("#email").val('');
         $("#comentarioAcitividad").val('');
       }
     })

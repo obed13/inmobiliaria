@@ -1,5 +1,5 @@
-<?php 
-  session_start(); 
+<?php
+  session_start();
   require_once '../conexion.php';
   require_once '../sesion.php';
   $conexion = conectar();
@@ -48,10 +48,6 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -115,7 +111,7 @@
               <input type="password" class="form-control" name="pass_edit" id="pass_edit" placeholder="Password">
               <input type="hidden" name="id_user" id="id_user" value="<?php echo $id; ?>">
             </div>
-            <button type="submit" id="submit_edit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="submit_edit" class="btn btn-primary">Guardar</button>
             <div id="result"></div>
           </form>
         </div>
@@ -145,7 +141,6 @@
           data: datos,
           success: function (data) {
             if(data.msj == true) {
-              
               $("#result").html("<div class='alert alert-success'>Se Modifico Exitosamente!</div>");
               //$("#result").html("<div class='alert alert-success'>Logeado!</div>");
             }else{
@@ -166,7 +161,6 @@
         .always(function() {
           console.log("complete");
         });
-
       });
     });
     </script>

@@ -1,4 +1,4 @@
-<?php  
+<?php
 	$sql = "SELECT DATE_FORMAT(a.fecha_inicio, '%d-%m-%Y') fecha, a.fecha_entrega FROM proceso_cartera a WHERE id_cartera='$id' ";
 	$resultado = $conexion->query($sql);
 	$row = $resultado->fetch_array();
@@ -46,7 +46,16 @@
 				<input type="hidden" name="fecha_entrega" id="fecha_entregas" value="<?php echo $row['fecha_entrega']; ?>">
 			</tr>
 			<tr>
-				<td><label for="archivo">Archivo de Constancia:</label></td>
+				<td><label >Moneda:</label></td>
+				<td>
+					<select name="moneda" id="moneda" class="form-control">
+						<option value="1">Pesos</option>
+						<option value="2">Dolares</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="archivo">Archivo de Estimacion:</label></td>
 				<td><input type="file" <?php if($proceso == false) { ?> disabled <?php } ?> class="form-control" name="archivo" id="archivo"></td>
 			</tr>
 			<tr>
@@ -58,7 +67,7 @@
 		</table>
 	</form>
 </div>
-<div class="col-md-3 col-md-offset-1">
+<div class="col-xs-12 col-md-3 col-md-offset-1">
 	<form action="update_fecha.php" method="POST" id="form_fecha" name="form_fecha">
 		<label for="fecha_inicio">Fecha de Inicio</label>
 		<br>
@@ -80,17 +89,26 @@
 	$(function() {
 //=========================================================================//
 
-  $('#precio_dueno').mask('000,000,000.00', {reverse: true});
-  $('#precio_sugerido').mask('000,000,000.00', {reverse: true});
+  	$('#precio_dueno').mask('000,000,000', {reverse: true});
+  	$('#precio_sugerido').mask('000,000,000', {reverse: true});
+  	//$('#precio_dueno').unmask('000,000,000', {reverse: true});
+	//$('#precio_sugerido').unmask('000,000,000', {reverse: true});
 
 //=========================================================================//
 		$("#submit_proceso").on('click', function(e) {
 			e.preventDefault();
 			/* Act on the event */
+            //alert($("#moneda").val());
 
-			if ($("#precio_dueno").val() == "" && $("#precio_sugerido").val() == "" && $("#archivo").val() == "") {
+			if ($("#precio_dueno").val() == "") {
 				$("#result").html("<div class='alert alert-danger'>Hay Campos Vacios!!!!</div>");
-			} else{
+			}else if ($("#precio_sugerido").val() == "" ) {
+				$("#result").html("<div class='alert alert-danger'>Hay Campos Vacios!!!!</div>");
+			}else if ($("#moneda").val() == '' ) {
+				$("#result").html("<div class='alert alert-danger'>Hay Campos Vacios!!!!</div>");
+			}  else{
+				$('#precio_sugerido').unmask('000,000,000', {reverse: true});
+				$('#precio_dueno').unmask('000,000,000', {reverse: true});
 				$("#form_archivo").submit();
 			}
 

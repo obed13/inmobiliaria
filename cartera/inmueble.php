@@ -71,7 +71,7 @@
 	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="gravamen" id="gravamen" placeholder="CON o SIN" value="<?php echo $dato['gravamen']; ?>"> gravamen
 	  		<select name="opcion" id="opcion" class="form-control">
 	  		<option value="Infonavit" <?php if ($dato['opcion'] == 'Infonavit') {echo "selected='selected' ";} ?> >Infonavit</option>
-	  		<option value="Bancaria" <?php if ($dato['opcion'] == 'Bancaria') {echo "selected='selected' ";} ?> >Bancaria</option></select> por la cantidad de <input type="text" name="cantidad" id="cantidad" class="form-control" value="<?php echo $dato['cantidad']; ?>" placeholder="$$$"> e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" value="<?php echo $dato['titular']; ?>" placeholder="A nombre de:" >
+	  		<option value="Bancaria" <?php if ($dato['opcion'] == 'Bancaria') {echo "selected='selected' ";} ?> >Bancaria</option></select> por la cantidad de <input type="text" name="cantidad" id="cantidad" class="form-control" value="<?php echo $dato['cantidad']; ?>" placeholder="$$$"> <input type="radio" name="moneda" id="moneda" <?php if ($dato['moneda'] == 1) {echo "checked";} ?> class="form-control" value="1">Pesos <input type="radio" name="moneda" <?php if ($dato['moneda'] == 2) {echo "checked";} ?> id="moneda" class="form-control" value="2">Dolares e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" value="<?php echo $dato['titular']; ?>" placeholder="A nombre de:" >
 	  	</div>
 	 </div>
 	 <div class="panel panel-primary">
@@ -80,7 +80,7 @@
 	  	</div>
 	  	<div class="panel-body">
 	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" <?php if ($dato['ve_re'] == 1) {echo "checked";} ?> class="form-control" value="1" >
-	  		/ renta <input type="radio" name="ve_re" id="ve_re" <?php if ($dato['ve_re'] == 2) {echo "checked";} ?> class="form-control" value="2" > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" value="<?php echo $dato['precio']; ?>" >
+	  		/ renta <input type="radio" name="ve_re" id="ve_re" <?php if ($dato['ve_re'] == 2) {echo "checked";} ?> class="form-control" value="2" > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" value="<?php echo $dato['precio']; ?>" > <input type="radio" name="moneda2" id="moneda2" <?php if ($dato['moneda2'] == 1) {echo "checked";} ?> class="form-control" value="1">Pesos <input type="radio" name="moneda2" <?php if ($dato['moneda2'] == 2) {echo "checked";} ?> id="moneda2" class="form-control" value="2">Dolares
 	  		con una comisión de venta del <input type="text" name="comision" id="comision" class="form-control" placeholder="Comision %" value="<?php echo $dato['comision']; ?>"  required >%, 
 	  		bajo las siguientes condiciones
 	  		<br><textarea name="descripcion_2" id="descripcion_2" cols="100" rows="3" class="form-control" ><?php echo $dato['descripcion_2']; ?></textarea>

@@ -1,5 +1,5 @@
-<?php 
-  session_start(); 
+<?php
+  session_start();
   require_once '../conexion.php';
   require_once '../sesion.php';
   $conexion = conectar();
@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Listado de Usuarios</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -75,7 +75,7 @@
                 </tr>
               </thead>
               <tbody>
-          <?php  
+          <?php
           $sql = "select
                     a.id_user,
                     concat(a.nombre,' ',a.ap_paterno) as nombres,
@@ -97,9 +97,9 @@
                   <td><?php echo $row['nombres']; ?></td>
                   <td><?php echo $row['correo']; ?></td>
                   <td>
-                    <?php 
-                      if ($row['id_cat'] == 1) { 
-                        echo "<label class='label label-success'>Administrador</label>"; 
+                    <?php
+                      if ($row['id_cat'] == 1) {
+                        echo "<label class='label label-success'>Administrador</label>";
                       }elseif ($row['id_cat'] == 2) {
                         echo "<label class='label label-warning'>Ventas</label>";
                       }elseif ($row['id_cat'] == 3) {

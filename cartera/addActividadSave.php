@@ -3,7 +3,6 @@
 	$conexion = conectar();
 
 	$id_cartera = $_POST['id_carteraActividad'];
-	$tipoActividad = $_POST['tipoActividad'] ;
 	$opcionActividad = $_POST['opcionActividad'] ;
 	$fechaActividad = $_POST['fechaActividad'] ;
 	$comentarioAcitividad = $_POST['comentarioAcitividad'] ;
@@ -13,7 +12,7 @@
 	$email = $_POST['email'];
 
 
-	$sql = "INSERT INTO actividades (id_cartera,id_tipo_cat,id_user,opcion,fecha,interesado,telefono,email,comentario) VALUES ('".$id_cartera."','".$tipoActividad."','".$usuario."','".$opcionActividad."','".$fechaActividad."','".$interesado."','".$tel."','".$email."','".$comentarioAcitividad."') ";
+	$sql = "INSERT INTO actividades (id_cartera,id_user,opcion,fecha,interesado,telefono,email,comentario) VALUES ('".$id_cartera."','".$usuario."','".$opcionActividad."','".$fechaActividad."','".$interesado."','".$tel."','".$email."','".$comentarioAcitividad."') ";
 
 	$resultado = $conexion->query($sql);
 

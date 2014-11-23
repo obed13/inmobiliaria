@@ -1,5 +1,4 @@
-<?php  
-	
+<?php
 	require_once '../conexion.php';
 
 	$conexion = conectar();
@@ -18,15 +17,14 @@
 	}else{
 		$sql = "UPDATE usuario SET id_cat='".$cat."', nombre='".$nombre."', ap_paterno='".$paterno."', ap_materno='".$materno."', correo='".$email."', password='".$pass."'  WHERE id_user='".$id_user."' ";	
 	}
-	
 
 	$result = $conexion->query($sql);
 
-	if ($result) 
+	if ($result)
 	{
 		$result = array('msj' => true);
 	}
-	else 
+	else
 	{
 		$result = array('msj' => false);
 	}

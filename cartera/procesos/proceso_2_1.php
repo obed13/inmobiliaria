@@ -52,7 +52,7 @@
 	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="gravamen" id="gravamen" placeholder="CON o SIN" > gravamen
 	  		<select name="opcion" id="opcion" class="form-control"> <option value="">-- Seleccione --</option>
 	  		<option value="Infonavit">Infonavit</option>
-	  		<option value="Bancaria">Bancaria</option></select> por la cantidad de <input type="text" name="cantidad" id="cantidad" class="form-control" placeholder="$$$"> e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" placeholder="A nombre de:" >
+	  		<option value="Bancaria">Bancaria</option></select> por la cantidad de <input type="text" name="cantidad" id="cantidad" class="form-control" placeholder="$$$"> <input type="radio" name="moneda" id="moneda" class="form-control" value="1">Pesos<input type="radio" name="moneda" id="moneda" class="form-control" value="2">Dolares e inscrito en el R.P.P.C. bajo el nombre (Completo) <input type="text" class="form-control" name="titular" id="titular" placeholder="Nombre Completo" >
 	  	</div>
 	 </div>
 	 <div class="panel panel-primary">
@@ -60,8 +60,8 @@
 	    	<h3 class="panel-title">Condiciones para la gestión de venta o renta:</h3>
 	  	</div>
 	  	<div class="panel-body">
-	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="1" >
-	  		/ renta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="2" > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" >
+	  		Se pacta un precio de venta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="1" required >
+	  		/ renta <input type="radio" name="ve_re" id="ve_re" class="form-control" value="2" required > de <input type="text" name="precio" id="precio" class="form-control" placeholder="$$$" required> <input type="radio" name="moneda2" id="moneda2" class="form-control" value="1" required>Pesos<input type="radio" name="moneda2" id="moneda2" class="form-control" value="2" required>Dolares
 	  		con una comisión de venta del <input type="text" name="comision" id="comision" class="form-control" placeholder="Comision %"  required >%, 
 	  		bajo las siguientes condiciones
 	  		<br><textarea name="descripcion_2" id="descripcion_2" cols="100" rows="3" class="form-control" ></textarea>
@@ -74,7 +74,7 @@
 	 </div>
 	</form>
 </div>
-<div class="col-md-3">
+<div class="col-xs-12 col-md-3">
 	<form action="update_fecha.php" method="POST" id="form_fecha" name="form_fecha">
 		<label for="fecha_inicio">Fecha de Inicio</label>
 		<br>

@@ -49,7 +49,7 @@
               <div class="col-xs-12 col-md-3">
               <a data-rel="tooltip" title="<?php if ($row['id_cartera']) { echo $num." Cartera"; } ?>" class="well span3 top-block" href="list_cartera.php">
                 <span class="icon32 icon-color icon-clipboard"></span>
-                <div>Listado Cartera</div>
+                <div>Listado Disponible</div>
                 <?php if ($row['id_cartera']) { echo "<div>".$num."</div>"; } ?>
               </a>
               </div>
@@ -67,7 +67,7 @@
                 <?php if ($row2['id_cartera']) { echo "<div>".$num2."</div>"; } ?>
               </a>
               </div>
-              <?php  
+              <?php
                 $sql3 = "SELECT id_cartera FROM proceso_cartera where estatus = 2";
 
                 $inst3 = $conexion->query($sql3);
@@ -82,7 +82,7 @@
               </a>
               </div>
               <div class="col-xs-12 col-md-3">
-              <a data-rel="tooltip" title="Reporte de Cateras" class="well span3 top-block" href="pdf/reporte.php" target="_blank">
+              <a data-rel="tooltip" class="well span3 top-block"data-toggle='modal' data-target='.reporte' href="javascript:void(0)">
                 <span class="icon32 icon-color icon-pdf"></span>
                 <div>Reporte de Carteras</div>
               </a>
@@ -100,3 +100,50 @@
     <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
+<!--  Inicio Dialogo Reporte -->
+<div class="modal fade reporte" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Reporte de Mes</h4>
+      </div>
+      <div class="modal-body">
+          <form action="pdf/reporte.php" method="GET" id="reporteAct" name="reporteAct" target="_blank" >
+            <label for="mes">Mes:</label>
+            <br>
+            <select name="mes" id="mes" class="form-control" required>
+              <option value="01">Enero</option>
+              <option value="02">Febrero</option>
+              <option value="03">Marzo</option>
+              <option value="04">Abril</option>
+              <option value="05">Mayo</option>
+              <option value="06">Junio</option>
+              <option value="07">Julio</option>
+              <option value="08">Agosto</option>
+              <option value="09">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+            <br>
+            <label for="ano">Año:</label>
+            <br>
+            <select name="ano" id="ano" class="form-control" required>
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+            </select>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Aceptar">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

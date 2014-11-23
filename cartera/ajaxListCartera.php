@@ -35,6 +35,7 @@
           b.id_cat = c.id_cat
       	and
           c.id_cat = d.id_cat
+        order by a.fecha_entrega
     ";
 	$rows = array();
 

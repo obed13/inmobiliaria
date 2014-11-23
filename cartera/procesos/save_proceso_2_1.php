@@ -32,8 +32,9 @@
     $fecha_inicio   = date ( 'Y-m-d');
     $opcion         = $_POST['opcion'];
     $cantidad       = $_POST['cantidad'];
+    $moneda         = $_POST['moneda'];
+    $moneda2         = $_POST['moneda2'];
     $id = $_POST['id_user'];
-
       #Funcion de Mensaje para El Encargado del Proceso
       #proceso = Encargado
       #2 = 2
@@ -51,7 +52,7 @@
       $fecha_entrega = strtotime ( '+5 day' , strtotime ( $fecha_inicio ) ) ;
       $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
-      $sql = 'INSERT INTO datos_inmuebles(id_cartera,tipo_mueble,terreno_2,dimension_1,dimension_2,construccion_m,recamaras,bano,nivel,ampli,excendente,material,resp_1,resp_2,resp_3,luz,descripcion_1,gravamen,opcion,cantidad,titular,ve_re,precio,comision,descripcion_2,meses,mes_inicio,mes_fin) VALUES ("'.$id_cartera.'","'.$tipo_mueble.'","'.$terreno_m.'","'.$dimension_1.'","'.$dimension_2.'","'.$construccion_m.'","'.$recamaras.'","'.$bano.'","'.$nivel.'","'.$ampli.'","'.$excendente.'","'.$material.'","'.$resp_1.'","'.$resp_2.'","'.$resp_3.'","'.$luz.'","'.$descripcion_1.'","'.$gravamen.'","'.$opcion.'","'.$cantidad.'","'.$titular.'","'.$ve_re.'","'.$precio.'","'.$comision.'","'.$descripcion_2.'","'.$meses.'","'.$mes_inicio.'","'.$mes_fin.'") ';
+      $sql = 'INSERT INTO datos_inmuebles(id_cartera,tipo_mueble,terreno_2,dimension_1,dimension_2,construccion_m,recamaras,bano,nivel,ampli,excendente,material,resp_1,resp_2,resp_3,luz,descripcion_1,gravamen,opcion,cantidad,moneda,titular,ve_re,precio,moneda2,comision,descripcion_2,meses,mes_inicio,mes_fin) VALUES ("'.$id_cartera.'","'.$tipo_mueble.'","'.$terreno_m.'","'.$dimension_1.'","'.$dimension_2.'","'.$construccion_m.'","'.$recamaras.'","'.$bano.'","'.$nivel.'","'.$ampli.'","'.$excendente.'","'.$material.'","'.$resp_1.'","'.$resp_2.'","'.$resp_3.'","'.$luz.'","'.$descripcion_1.'","'.$gravamen.'","'.$opcion.'","'.$cantidad.'","'.$moneda.'","'.$titular.'","'.$ve_re.'","'.$precio.'","'.$moneda2.'","'.$comision.'","'.$descripcion_2.'","'.$meses.'","'.$mes_inicio.'","'.$mes_fin.'") ';
 
       $sqls = 'UPDATE proceso_cartera SET id_proceso="3",fecha_inicio="'.$fecha_inicio.'",fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
 

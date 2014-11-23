@@ -9,8 +9,13 @@
 		echo  "<div class='col-md-12'><div class='alert alert-danger'>Espere hasta que la persona de <u><b>".$nomcat['nom_cat']."</b></u> rellenar este proceso!!</div></div>";
 		$proceso = false;
 	}
+	$msj = $_GET['msj'];
+	if ($msj == 3) {
+		$msj ="<div class='alert alert-danger'>No has Agregado Fotos de la Casa</div>";
+	}
 ?>
 <div class="col-xs-12 col-md-6">
+	<?php echo $msj; ?>
 	<form id="frm" method="post" enctype="multipart/form-data" action='procesos/processImage.php'>
 		<table border="0" class="table table-striped">
 			<tr>
@@ -59,7 +64,7 @@
 		</table>
 	</form>
 </div>
-<div class="col-md-3 col-md-offset-1">
+<div class="col-xs-12 col-md-3 col-md-offset-1">
 	<form action="update_fecha.php" method="POST" id="form_fecha" name="form_fecha">
 		<label for="fecha_inicio">Fecha de Inicio</label>
 		<br>
@@ -76,8 +81,8 @@
 	</form>
 </div>
 <script>
-	$(function() {
-		$('#deskImg').die('click').live('change', function(){
+	$(document).ready(function()  {
+		$('#deskImg').off('click').on('change', function(){
 			$("#frm").ajaxForm({target: '#displayImg',
 			    beforeSubmit:function(){
                     //console.log('v');

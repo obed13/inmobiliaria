@@ -15,7 +15,8 @@
       a.firma_aviso_privacidad,
       a.nuevo_contrato,
       a.estatus,
-      a.id_usuarioRelacion
+      a.id_usuarioRelacion,
+      a.id_relacion
     from
       proceso_cartera a
     where
@@ -99,7 +100,7 @@
                     <div></div>
                   </a>
                 </div>
-                <?php if (isset($row['id_usuarioRelacion']) == 0) { ?>
+                <?php if ($row['id_relacion'] == 0) { ?>
                 <div class="col-xs-12 col-md-3">
                   <a data-rel="tooltip" class="well span3 top-block"data-toggle='modal' data-target='.relacion' href="javascript:void(0)">
                     <span class="icon32 icon-color icon-user"></span>
@@ -161,6 +162,8 @@
           ?>
             </select>
             <br>
+            <a href="javascript:void(0)" data-toggle='modal' data-target='.agregar' class="btn btn-warning" id="btn">Registrar</a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             <input type="submit" class="btn btn-primary" id="btnRelacion" value="Aceptar">
             <br>
             <div id="result"></div>
@@ -170,6 +173,42 @@
   </div>
 </div>
 <!-- Fin Dialogo Reporte -->
+<!--  Inicio Dialogo Registrar -->
+<div class="modal fade agregar" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Registrar Perosna Encargada</h4>
+      </div>
+      <div class="modal-body">
+        <form action="addRelacionSave.php" method="POST" id="formAddRegistro">
+      <label for="nombre">nombre:</label>
+      <br>
+      <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre" >
+      <br>
+      <label for="paterno">Apellido Paterno:</label>
+      <br>
+      <input type="text" name="paterno" class="form-control" id="paterno" placeholder="Apellido Paterno" >
+      <br>
+      <label for="materno">Apellido Materno:</label>
+      <br>
+      <input type="text" name="materno" class="form-control" id="materno" placeholder="Apellido Materno" >
+      <br>
+      <label for="codigo">Codigo Usuario:</label>
+      <br>
+      <input type="text" name="codigo" class="form-control" id="codigo" placeholder="Ejemplo: MAL 3 digitos (Iniciales de Nombre)" >
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <input type="submit" class="btn btn-primary" id="btnRegistrar" value="Agregar">
+        </form>
+      </div>
+      <div id="resultAddRegistro"></div>
+    </div>
+  </div>
+</div>
+<!-- Fin Dialogo Registrar -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -193,6 +232,7 @@ $(function() {
             if(data.msj == true) {
                     $("#result").fadeIn('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
                     $("#result").fadeOut('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
+                    window.location="cartera.php?id=<?php echo $_GET['id']; ?>";
                   }else{
                     $("#result").html("<div class='alert alert-danger'>No se pudo Guardar!</div>");
                   }
@@ -210,6 +250,40 @@ $(function() {
         .always(function() {
           console.log("complete");
         });
+  });
+  $("#btnRegistrar").on('click', function(e) {
+    e.preventDefault();
+    /* Act on the event */
+    var datos = $("#formAddRegistro").serialize();
+    /* Act on the event */
+    $.ajax({
+      url: 'addRelacionSave.php',
+      type: 'POST',
+      dataType: 'json',
+      data: datos,
+      success: function(data){
+        if(data.msj == true) {
+                $("#resultAddRegistro").fadeIn('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
+                $("#resultAddRegistro").fadeOut('slow').html("<div class='alert alert-success'>Se Guardo Exitosamente!</div>");
+                window.location="cartera.php?id=<?php echo $_GET['id']; ?>";
+              }else{
+                $("#resultAddRegistro").html("<div class='alert alert-danger'>No se pudo Guardar!</div>");
+              }
+      },
+            beforeSend: function(){
+              $("#resultAddRegistro").html("<div class='alert-info form-control'><img src='../../img/ajax-loader.gif' /> Loading...</div>");
+            }
+    })
+    .done(function() {
+      console.log("success");
+    })
+    .fail(function() {
+      console.log("error");
+      $("#resultAddRegistro").html("<div class='alert alert-danger'>ERROR!</div>");
+    })
+    .always(function() {
+      console.log("complete");
+    });
   });
 });
 </script>

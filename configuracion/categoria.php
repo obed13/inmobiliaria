@@ -1,7 +1,6 @@
-<?php  
+<?php
 	error_reporting(E_ALL ^ E_NOTICE);
   require_once '../sesion.php';
-  	
 
     if(!$id_cat)
     {
