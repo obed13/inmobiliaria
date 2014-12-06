@@ -25,6 +25,8 @@
 			a.id_accion = c.id_accion
 		and
 			a.id_cartera = d.id_cartera
+		and
+			d.estatus = 0
 	";
 
 	$rows = array();

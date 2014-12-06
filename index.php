@@ -1,12 +1,13 @@
 <?php
   error_reporting(E_ALL ^ E_NOTICE);
+  //require_once 'sesion.php';
 
   if (isset($_GET['msj']) == 1) {
-      $msj = "<div class='alert alert-danger'>Debes estar Logeado para Entrar!!</div>";
+    $msj = "<div class='alert alert-danger'>Debes estar Logeado para Entrar!!</div>";
   }
 
-  /*if (isset($_SESSION['autenticado']) && $_SESSION['autenticado'] == 'SI') {
-  	header("Location: inicio.php");
+  /*if (isset($$_SESSION['autenticado'] )) {
+    header("Location:inicio.php");
   }*/
 
 ?>
@@ -34,9 +35,7 @@
         <input class="btn btn-lg btn-primary btn-block" name="login_submit" id="login_submit" type="submit" value="Acceder">
         <div id="result"></div>
       </form>
-      
-
-    </div> <!-- /container -->
+  </div> <!-- /container -->
 </body>
 </html>
 <script src="js/jquery-1.10.2.js"></script>

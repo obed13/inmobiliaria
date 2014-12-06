@@ -56,33 +56,18 @@
         header("Location:../proceso.php?id=$id_cartera&msj=1");
       }
     }else{
-      #Funcion de Mensaje para El Encargado del Proceso
-      #proceso = Encargado
-      #2 = 2
-      #3 = 2
-      #4 = 3
-      #5 = 2
-      #6 = 3
-      #7 = 4
-      #8 = 3
-      #9 = 3
-      #10 = 3
-      bandeja($id,$id_cartera,3,1);
-      #Fin de Funcion
-      $fecha_entrega = strtotime ( '+10 day' , strtotime ( $fecha_inicio ) ) ;
-      $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
       $sql = 'UPDATE mls SET a4="'.$a4.'", a6="'.$a6.'", c2="'.$c2.'", c5="'.$c5.'" WHERE id_cartera="'.$id_cartera.'" ';
-      $sqls = 'UPDATE proceso_cartera SET id_proceso="8", fecha_inicio="'.$fecha_inicio.'", fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
-      $sql2 = 'UPDATE proceso_cartera SET recabar_doc_mls="3" WHERE id_cartera="'.$id_cartera.'" ';
-      $ins =  $conexion->query($sql2);
+      //$sqls = 'UPDATE proceso_cartera SET id_proceso="8", fecha_inicio="'.$fecha_inicio.'", fecha_entrega="'.$fecha_entrega.'" WHERE id_cartera="'.$id_cartera.'" ';
+      //$sql2 = 'UPDATE proceso_cartera SET recabar_doc_mls="3" WHERE id_cartera="'.$id_cartera.'" ';
+      //$ins =  $conexion->query($sql2);
       $ruta = $conexion->query($sql);
-      $rutas = $conexion->query($sqls);
+      //$rutas = $conexion->query($sqls);
 
       if ($ruta) {
-        header("Location:../proceso.php?id=$id_cartera");
+        header("Location:../proceso.php?id=$id_cartera&proceso=7.1");
       } else {
-        header("Location:../proceso.php?id=$id_cartera&msj=1");
+        header("Location:../proceso.php?id=$id_cartera&proceso=7.1&msj=1");
       }
     }
 ?>

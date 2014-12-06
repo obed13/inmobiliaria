@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
   	<link rel="stylesheet" href="../css/dashboard.css">
   	<link rel="stylesheet" href="../css/estilo.css">
+  	<link rel="stylesheet" href="../css/opa-icons.css">
 	<!-- JavaScript -->
 	<script src="../js/jquery-1.10.2.js"></script>
 	<script src="../js/jquery.min.js"></script>
@@ -29,6 +30,7 @@
 <body>
 <?php include_once 'menu_bar.php'; ?>
 <div class="container-fluid">
+<h3 class="sub-header"><a href="cartera.php?id=<?php echo $_GET['id']; ?>"><span class="icon32 icon-color icon-arrowthick-w" title="Regresar"></span></a>Regresar</h3>
 <div class="col-sm-9 col-md-10 col-md-offset-1 main">
 	<form action="save_inmueble.php" method="POST" class="form-inline" role="form">
 	<div class="panel panel-primary">
@@ -68,7 +70,11 @@
 	    	<h3 class="panel-title">Condiciones legales del inmueble:</h3>
 	  	</div>
 	  	<div class="panel-body">
-	  		El inmueble antes mencionado se encuentra <input type="text" class="form-control" name="gravamen" id="gravamen" placeholder="CON o SIN" value="<?php echo $dato['gravamen']; ?>"> gravamen
+	  		El inmueble antes mencionado se encuentra <select name="gravamen" id="gravamen" class="form-control" required >
+	  			<option value="">..selecciona..</option>
+				<option value="CON" <?php if ($dato['gravamen'] == 'CON') {echo "selected='selected' ";} ?> >CON</option>
+				<option value="SIN" <?php if ($dato['gravamen'] == 'SIN') {echo "selected='selected' ";} ?> >SIN</option>
+			</select> gravamen
 	  		<select name="opcion" id="opcion" class="form-control">
 	  		<option value="Infonavit" <?php if ($dato['opcion'] == 'Infonavit') {echo "selected='selected' ";} ?> >Infonavit</option>
 	  		<option value="Bancaria" <?php if ($dato['opcion'] == 'Bancaria') {echo "selected='selected' ";} ?> >Bancaria</option></select> por la cantidad de <input type="text" name="cantidad" id="cantidad" class="form-control" value="<?php echo $dato['cantidad']; ?>" placeholder="$$$"> <input type="radio" name="moneda" id="moneda" <?php if ($dato['moneda'] == 1) {echo "checked";} ?> class="form-control" value="1">Pesos <input type="radio" name="moneda" <?php if ($dato['moneda'] == 2) {echo "checked";} ?> id="moneda" class="form-control" value="2">Dolares e inscrito en el R.P.P.C. bajo el nombre <input type="text" class="form-control" name="titular" id="titular" value="<?php echo $dato['titular']; ?>" placeholder="A nombre de:" >
@@ -85,6 +91,33 @@
 	  		bajo las siguientes condiciones
 	  		<br><textarea name="descripcion_2" id="descripcion_2" cols="100" rows="3" class="form-control" ><?php echo $dato['descripcion_2']; ?></textarea>
 	  		y se autoriza la promoción del inmueble antes señalado durante un plazo de <input type="text" name="meses" id="meses" class="form-control" placeholder="Meses" value="<?php echo $dato['meses']; ?>" >Meses a partir de <input type="date" name="mes_inicio" id="mes_inicio" class="form-control" value="<?php echo $dato['mes_inicio']; ?>" > hasta <input type="date" name="mes_fin" id="mes_fin" class="form-control" value="<?php echo $dato['mes_fin']; ?>" >
+	  	</div>
+	  	<div class="panel panel-primary">
+		  	<div class="panel-heading">
+		    	<h3 class="panel-title">Forma de Contactar al Interesado</h3>
+		  	</div>
+		  	<div class="panel-body">
+		  		<label for="nombre">Nombre:</label>
+		  		<br>
+		  		<input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombres" value="<?php echo $dato['nombre']; ?>" />
+		  		<br>
+		  		<label for="apellidos">Apellidos:</label>
+		  		<br>
+		  		<input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Apellidos" value="<?php echo $dato['apellidos']; ?>" />
+		  		<br>
+		  		<label for="tel_casa">Tel Casa: </label>
+		  		<br>
+		  		<input type="text" name="tel_casa" id="tel_casa" class="form-control" placeholder="Telefono de Casa" value="<?php echo $dato['tel_casa']; ?>" />
+		  		<br>
+		  		<label for="movil">Celular:</label>
+		  		<br>
+		  		<input type="text" name="movil" id="movil" class="form-control" placeholder="Telefono Celular" value="<?php echo $dato['movil']; ?>" />
+		  		<br>
+		  		<label for="email">Email:</label>
+		  		<br>
+		  		<input type="email" name="email" id="email" class="form-control" placeholder="Correo Electronico" value="<?php echo $dato['email']; ?>" />
+		  		<br>
+		  	</div>
 	  	</div>
 	  	<input type="hidden" name="id_cartera" id="id_cartera" value="<?php echo $id; ?>" >
 	  	<div class="panel-footer"><input type="submit" class="btn btn-primary" value="Aceptar"></div>

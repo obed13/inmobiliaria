@@ -59,8 +59,30 @@
               </a>
               </div>
 
-                <?php  
-                  $sql = "SELECT destinatario,id_accion FROM post";
+                <?php
+                  $sql = "select
+                            a.id_post,
+                            a.post mensaje,
+                            DATE_FORMAT(a.fecha, '%d-%m-%Y') fecha,
+                            a.id_accion,
+                            c.nom_accion,
+                            b.id_user,
+                            concat(b.nombre,' ',b.ap_paterno)as destinatario,
+                            a.id_cartera,
+                            d.nom_cartera
+                          from
+                            post a,
+                            usuario b,
+                            cat_accion c,
+                            proceso_cartera d
+                          where
+                            a.destinatario = b.id_cat
+                          and
+                            a.id_accion = c.id_accion
+                          and
+                            a.id_cartera = d.id_cartera
+                          and
+                            d.estatus = 0";
 
                   $inst = $conexion->query($sql);
                   $con = $inst->num_rows;
@@ -83,7 +105,14 @@
                 <!--<span class="notification red">12</span>-->
               </a>
               </div>
-              <div class="col-xs-12 col-md-3"></div>
+              <div class="col-xs-12 col-md-3">
+              <a data-rel="tooltip" title="Agenda" class="well span3 top-block " href="agenda.php">
+                <span class="icon32 icon-color icon-book"></span>
+                <div>Agenda</div>
+                <!--<div>507</div>-->
+                <!--<span class="notification">6</span>-->
+              </a>
+              </div>
               <div class="col-xs-12 col-md-3"></div>
             </div>
             </div>

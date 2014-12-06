@@ -21,7 +21,18 @@
           a.coment_promesa,
           b.id_cat,
           c.nom_cat,
-          concat(d.nombre, ' ', d.ap_paterno) as nombre
+          concat(d.nombre, ' ', d.ap_paterno) as nombre,
+          (
+           SELECT
+            concat(dd.nombre,' ',dd.ap_paterno,' ',dd.ap_materno)
+           FROM
+            proceso_cartera aa,
+            usuario dd
+           WHERE
+            aa.id_proceso = a.id_proceso
+           AND
+            aa.resp = dd.id_user
+          ) as creador
         from
           proceso_cartera a,
           procesos b,

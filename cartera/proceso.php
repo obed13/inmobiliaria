@@ -66,7 +66,7 @@
           <?php include_once 'menu.php'; ?>
         </div>
         <div class="col-sm-9 col-md-10 col-md-offset-2 main">
-          <h3 class="sub-header">Cartera: <?php echo $cartera['nom_cartera'];?> <i class="pull-right">Encargado: <?php echo $cartera['nombre'];?></i></h3>
+          <h3 class="sub-header">Cartera: <?php echo $cartera['nom_cartera'];?> <i class="pull-right">Encargado: <?php echo $cartera['nom_cat'];?></i></h3>
           <?php include($contenido); ?>
         </div>
       </div>

@@ -63,8 +63,9 @@
 	            html +="<th>Nombre</th><th>Mensaje</th><th>Cartera</th><th>Fecha de Entrega</th><th colspan='2'>Status</th>";
 	            html +="</tr></thead>";
 	            for (i = 0; i < data.data.length; i++) {
+                if(data.data[i].id_proceso == 2){nombre="<label class='label label-warning'>" + data.data[i].creador + "</label>"}else{nombre="<label class='label label-warning'>" + data.data[i].nombre + "</label>"}
 	              html += "<tbody><tr>";
-	              html += "<td>" + data.data[i].destinatario + "</td>";
+	              html += "<td>" + data.data[i].nombre + "</td>";
 	              html += "<td>" + data.data[i].mensaje + "</td>";
                 html += "<td>" + data.data[i].nom_cartera + "</td>";
 	              html += "<td>" + data.data[i].fecha + "</td>";
@@ -91,7 +92,6 @@
     	.always(function() {
     		console.log("complete");
     	});
-    	
     });
     </script>
 </body>

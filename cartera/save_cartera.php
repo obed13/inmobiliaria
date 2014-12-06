@@ -4,6 +4,7 @@
 	$conexion = conectar();
 
 	$cartera = strtoupper($_POST['nom_cartera']);
+	$id_user = $_POST['id_user'];
 	$fecha_entrega = strtotime ( '+5 day' , strtotime ( date ( 'Y-m-d' ) ) ) ;
     $fecha_entrega = date ( 'Y-m-d' , $fecha_entrega );
 
@@ -18,8 +19,8 @@
 	    $cons = $conexion->query($querys);
 	    $consec = $cons->fetch_array();
 
-		$sql = "INSERT INTO proceso_cartera(consec,nom_cartera,fecha,id_proceso,fecha_inicio,fecha_entrega,recabar_doc_mls)
-		 VALUES('".$consec['id']."','$cartera',now(),'2',now(),'$fecha_entrega','0') ";
+		$sql = "INSERT INTO proceso_cartera(consec,nom_cartera,fecha,id_proceso,fecha_inicio,fecha_entrega,recabar_doc_mls,resp)
+		 VALUES('".$consec['id']."','".$cartera."',now(),'2',now(),'".$fecha_entrega."','0','".$id_user."') ";
 
 	    //$fecha = date ( 'Y-m-d' );
 

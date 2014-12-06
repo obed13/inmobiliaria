@@ -215,15 +215,16 @@ $.ajax({
             html +="<thead><tr><th>#</th><th>Cartera</th><th>Vencimiento</th><th>Encargado</th><th>Estatus</th><th>Estatus MLS</th><th>Accion</th><th></th><th></th><th></th></tr></thead><tbody>";
             for (i = 0; i < data.data.length; i++) {
               var fecha = restaFechas(f,data.data[i].fecha_entrega);
+              if(data.data[i].id_proceso == 2){nombre="<label class='label label-warning'>" + data.data[i].creador + "</label>"}else{nombre="<label class='label label-warning'>" + data.data[i].nombre + "</label>"}
               if(fecha <= 0){dias = "<div class='label alert-danger'>"+fecha+" Dias ATRASADO</div>";}else if(fecha == 1){dias = "<div class='label alert-danger'>Te Quedan "+fecha+" Dias</div>";}else if(fecha == 2){dias= "<div class='label alert-danger'>Te Quedan "+fecha+" Dias</div>";}else{dias = fecha+" Dias";}
               if (data.data[i].recabar_doc_mls==3) { recabar_doc_mls = "<label class='label label-info'>MLS Express</label>"; }else if (data.data[i].recabar_doc_mls==2) { recabar_doc_mls = "<label class='label label-danger'>MLS (No Terminado)</label>"; }else if (data.data[i].recabar_doc_mls==1) { recabar_doc_mls = "<label class='label label-success'>MLS</label>"; }else { recabar_doc_mls = ""; }
-              if (data.data[i].promesa == 4) {promesa ="<label class='label label-success'>Negociacion</label>";}else if (data.data[i].promesa == 3) {promesa ="<label class='label label-success'>Promesa</label>"; }else if (data.data[i].promesa == 2) {promesa ="<label class='label label-success'>Rentada</label>"; }else if (data.data[i].promesa == 1) {promesa ="<label label class='label-success'>Vendida</label>"; }else { promesa = ""; }
+              if (data.data[i].promesa == 4) {promesa ="<label class='label label-success'>Negociacion</label>";}else if (data.data[i].promesa == 3) {promesa ="<label class='label label-success'>Promesa</label>"; }else if (data.data[i].promesa == 2) {promesa ="<label class='label label-success'>Rentada</label>"; }else if (data.data[i].promesa == 1) {promesa ="<label class='label label-success'>Vendida</label>"; }else { promesa = ""; }
               num++;
               html += "<tr class='lista' id_cartera='"+data.data[i].id_cartera+"' nom_cartera='"+data.data[i].nom_cartera+"' fecha='"+data.data[i].fecha+"' dias='"+data.data[i].dias+"' id_proceso='"+data.data[i].id_proceso+"' recabar_doc_mls='"+data.data[i].recabar_doc_mls+"' firma_aviso_privacidad='"+data.data[i].firma_aviso_privacidad+"' nuevo_contrato='"+data.data[i].nuevo_contrato+"' estatus='"+data.data[i].estatus+"' fecha_entrega='"+data.data[i].fecha_entrega+"' promesa='"+data.data[i].promesa+"' fechaEsperada='"+data.data[i].fechaEsperada+"' fechaCierre='"+data.data[i].fechaCierre+"' coment_promesa='"+data.data[i].coment_promesa+"' >";
               html += "<td>" + num + "</td>";
               html += "<td>" + data.data[i].nom_cartera + "</td>";
               html += "<td>" + dias + "</td>";
-              html += "<td><label class='label label-warning'>" + data.data[i].nombre + "</label></td>";
+              html += "<td>" + nombre + "</td>";
               html += "<td>" + promesa +"</td>";
               html += "<td>" + recabar_doc_mls + "</td>";
               html += "<td><a href='cartera.php?id=" + data.data[i].id_cartera + "' class='btn btn-primary btn-sm'>Cartera</a></td>";

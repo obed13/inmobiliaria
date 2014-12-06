@@ -23,12 +23,13 @@
           <?php include_once 'menu.php'; ?>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">Bienvenido</h2>
+          <h2 class="sub-header">Bienvenido </h2>
             <div class="col-md-4 col-md-offset-4" style="border:1px solid #212121;border-radius:.5em;">
             <form action="save_cartera.php" method="POST" name="form_post" id="form_post">
               <label for="nom_producto">Nueva Cartera:</label>
               <br>
               <input type="text" class="form-control" name="nom_cartera" id="nom_cartera" placeholder="Cartera Nueva">
+              <input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['uid']; ?>">
               <br>
               <input type="submit" class="btn btn-primary col-md-4 col-md-offset-4" id="btn-submit" value="Aceptar">
               <br>
